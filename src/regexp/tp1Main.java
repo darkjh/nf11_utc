@@ -24,31 +24,32 @@ public class tp1Main {
 
 		// Question 5
 		// debut de chaine et d�but de mot
-		//		String patternString = "\\w+le\\w+";
-		//		String text = "parlement epaule paralelle lente lelele";
+//				String patternString = "(?!\\ble|le\\b)";
+//				//String text = "parlement epaule paralelle lente lelele";
+//				String text = "epaule paralelle";
 
 		// Question 6
-		//		String patternString = "\\B(\\d+)\\w+";
-		//		String text = "Ax25By qsdone767dioq qsZION3749qdz 12345 ";
+//				String patternString = "\\B(\\d+)\\w+";
+//				String text = "Ax25By qsdone767dioq qsZION3749qdz 12345 ";
 
 		// Question 7
-		//		String patternString = "\\{\\s*\\\"\\w+\\\"\\s*:\\s*\\[(\\d+),(\\d+)\\]\\s*\\}";
-		//		String text = "{          \"args\"      : [10,20]       }";
+//				String patternString = "\\{\\s*\\\"\\w+\\\"\\s*:\\s*\\[(\\d+),(\\d+)\\]\\s*\\}";
+//				String text = "{          \"args\"      : [10,20]       }";
 
 		// Question 8
-		//		String patternString = "<.+xml:lang\\s?=\\s?((\"|')(\\w+)\\2).*>";
-		//		String text = "<contact xml:lang = 'fr' id = \"c1\">";
+//				String patternString = "<.+xml:lang\\s?=\\s?((\"|')(\\w+)\\2).*>";
+//				String text = "<contact xml:lang = 'fr' id = \"c1\">";
 
 		// Question 9
-		//		String patternString = "utc(?=[a-z]\\d{3}\\b)[a-z]";
-		//		String text = "utcd123 utca10411";
+//				String patternString = "utc(?=[a-z]\\d{3}\\b)[a-z]";
+//				String text = "utcd123 utca10411";
 
 		// Question 10-1
-		//		String patternString = "(?<=\\D\\d)(.+)(?=\\d{2})";
-		//		String text = "25.3a512b.3.5135";
+//				String patternString = "(?<=\\D\\d)(.+)(?=\\d{2})";
+//				String text = "25.3a512b.3.5135";
 
 		// Question 10-2
-		String patternString = "(?<=\\D\\d)(.+?)?(?=\\d{2})";
+		String patternString = "(?<=\\D\\d)(.+?)(?=\\d{2})";
 		String text = "25.3a512b.3.5135";
 
 		Pattern p = Pattern.compile(patternString);
@@ -166,6 +167,6 @@ public class tp1Main {
 	}
 	
 	public static void main(String[] args) {
-		Q2_4();
+		Q1();
 	}
 }

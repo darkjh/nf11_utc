@@ -1,0 +1,17 @@
+AV=4
+CF=5
+CO=6
+FPOS=7
+INT=8
+PROGRAMME=9
+REC=10
+TD=11
+TG=12
+WS=13
+'AV'=4
+'FPOS'=7
+'REC'=10
+'TD'=11
+'TG'=12
+'['=6
+']'=5

@@ -1,0 +1,518 @@
+// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-04-12 12:15:16
+
+  package logoparsing;
+
+
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
+
+@SuppressWarnings({"all", "warnings", "unchecked"})
+public class LogoLexer extends Lexer {
+    public static final int EOF=-1;
+    public static final int AV=4;
+    public static final int CF=5;
+    public static final int CO=6;
+    public static final int FPOS=7;
+    public static final int INT=8;
+    public static final int PROGRAMME=9;
+    public static final int REC=10;
+    public static final int TD=11;
+    public static final int TG=12;
+    public static final int WS=13;
+
+    // delegates
+    // delegators
+    public Lexer[] getDelegates() {
+        return new Lexer[] {};
+    }
+
+    public LogoLexer() {} 
+    public LogoLexer(CharStream input) {
+        this(input, new RecognizerSharedState());
+    }
+    public LogoLexer(CharStream input, RecognizerSharedState state) {
+        super(input,state);
+    }
+    public String getGrammarFileName() { return "/home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g"; }
+
+    // $ANTLR start "AV"
+    public final void mAV() throws RecognitionException {
+        try {
+            int _type = AV;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:6:4: ( 'AV' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:6:6: 'AV'
+            {
+            match("AV"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "AV"
+
+    // $ANTLR start "CF"
+    public final void mCF() throws RecognitionException {
+        try {
+            int _type = CF;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:4: ( ']' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:6: ']'
+            {
+            match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "CF"
+
+    // $ANTLR start "CO"
+    public final void mCO() throws RecognitionException {
+        try {
+            int _type = CO;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:4: ( '[' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:6: '['
+            {
+            match('['); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "CO"
+
+    // $ANTLR start "FPOS"
+    public final void mFPOS() throws RecognitionException {
+        try {
+            int _type = FPOS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:6: ( 'FPOS' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:8: 'FPOS'
+            {
+            match("FPOS"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "FPOS"
+
+    // $ANTLR start "REC"
+    public final void mREC() throws RecognitionException {
+        try {
+            int _type = REC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:5: ( 'REC' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:7: 'REC'
+            {
+            match("REC"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "REC"
+
+    // $ANTLR start "TD"
+    public final void mTD() throws RecognitionException {
+        try {
+            int _type = TD;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:4: ( 'TD' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:6: 'TD'
+            {
+            match("TD"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "TD"
+
+    // $ANTLR start "TG"
+    public final void mTG() throws RecognitionException {
+        try {
+            int _type = TG;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:4: ( 'TG' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:6: 'TG'
+            {
+            match("TG"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "TG"
+
+    // $ANTLR start "INT"
+    public final void mINT() throws RecognitionException {
+        try {
+            int _type = INT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:5: ( ( '0' .. '9' )+ )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:7: ( '0' .. '9' )+
+            {
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:7: ( '0' .. '9' )+
+            int cnt1=0;
+            loop1:
+            do {
+                int alt1=2;
+                int LA1_0 = input.LA(1);
+
+                if ( ((LA1_0 >= '0' && LA1_0 <= '9')) ) {
+                    alt1=1;
+                }
+
+
+                switch (alt1) {
+            	case 1 :
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:
+            	    {
+            	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+            	        input.consume();
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt1 >= 1 ) break loop1;
+                        EarlyExitException eee =
+                            new EarlyExitException(1, input);
+                        throw eee;
+                }
+                cnt1++;
+            } while (true);
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "INT"
+
+    // $ANTLR start "WS"
+    public final void mWS() throws RecognitionException {
+        try {
+            int _type = WS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            {
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            int cnt3=0;
+            loop3:
+            do {
+                int alt3=4;
+                switch ( input.LA(1) ) {
+                case ' ':
+                    {
+                    alt3=1;
+                    }
+                    break;
+                case '\t':
+                    {
+                    alt3=2;
+                    }
+                    break;
+                case '\n':
+                case '\r':
+                    {
+                    alt3=3;
+                    }
+                    break;
+
+                }
+
+                switch (alt3) {
+            	case 1 :
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:10: ' '
+            	    {
+            	    match(' '); 
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:14: '\\t'
+            	    {
+            	    match('\t'); 
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:19: ( ( '\\r' )? '\\n' )
+            	    {
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:19: ( ( '\\r' )? '\\n' )
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: ( '\\r' )? '\\n'
+            	    {
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: ( '\\r' )?
+            	    int alt2=2;
+            	    int LA2_0 = input.LA(1);
+
+            	    if ( (LA2_0=='\r') ) {
+            	        alt2=1;
+            	    }
+            	    switch (alt2) {
+            	        case 1 :
+            	            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: '\\r'
+            	            {
+            	            match('\r'); 
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    match('\n'); 
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt3 >= 1 ) break loop3;
+                        EarlyExitException eee =
+                            new EarlyExitException(3, input);
+                        throw eee;
+                }
+                cnt3++;
+            } while (true);
+
+
+             skip(); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "WS"
+
+    public void mTokens() throws RecognitionException {
+        // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:8: ( AV | CF | CO | FPOS | REC | TD | TG | INT | WS )
+        int alt4=9;
+        switch ( input.LA(1) ) {
+        case 'A':
+            {
+            alt4=1;
+            }
+            break;
+        case ']':
+            {
+            alt4=2;
+            }
+            break;
+        case '[':
+            {
+            alt4=3;
+            }
+            break;
+        case 'F':
+            {
+            alt4=4;
+            }
+            break;
+        case 'R':
+            {
+            alt4=5;
+            }
+            break;
+        case 'T':
+            {
+            int LA4_6 = input.LA(2);
+
+            if ( (LA4_6=='D') ) {
+                alt4=6;
+            }
+            else if ( (LA4_6=='G') ) {
+                alt4=7;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 4, 6, input);
+
+                throw nvae;
+
+            }
+            }
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            {
+            alt4=8;
+            }
+            break;
+        case '\t':
+        case '\n':
+        case '\r':
+        case ' ':
+            {
+            alt4=9;
+            }
+            break;
+        default:
+            NoViableAltException nvae =
+                new NoViableAltException("", 4, 0, input);
+
+            throw nvae;
+
+        }
+
+        switch (alt4) {
+            case 1 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:10: AV
+                {
+                mAV(); 
+
+
+                }
+                break;
+            case 2 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:13: CF
+                {
+                mCF(); 
+
+
+                }
+                break;
+            case 3 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:16: CO
+                {
+                mCO(); 
+
+
+                }
+                break;
+            case 4 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:19: FPOS
+                {
+                mFPOS(); 
+
+
+                }
+                break;
+            case 5 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:24: REC
+                {
+                mREC(); 
+
+
+                }
+                break;
+            case 6 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:28: TD
+                {
+                mTD(); 
+
+
+                }
+                break;
+            case 7 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:31: TG
+                {
+                mTG(); 
+
+
+                }
+                break;
+            case 8 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:34: INT
+                {
+                mINT(); 
+
+
+                }
+                break;
+            case 9 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:38: WS
+                {
+                mWS(); 
+
+
+                }
+                break;
+
+        }
+
+    }
+
+
+ 
+
+}

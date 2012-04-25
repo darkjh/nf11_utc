@@ -272,7 +272,7 @@ public class LogoFrame extends JFrame {
 		return jLogPane;
 	}
 	private void runParser() {
-	  String program = getJProgramArea().getText();
+	  String program = getJProgramArea().getText().toUpperCase();
 	  if (program.length() > 1 ) {
 		try {
 			// lexer	

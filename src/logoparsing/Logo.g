@@ -11,6 +11,10 @@ tokens {
   FPOS = 'FPOS';
   CO = '[';
   CF = ']';
+  VE = 'VE';
+  LC = 'LC';
+  BC = 'BC';
+  FCC = 'FCC';
 }
 @lexer::header {
   package logoparsing;
@@ -36,9 +40,11 @@ instruction :
   ( AV^  
   | TD^
   | TG^
-  | REC^) INT 
-  
-  |
-  FPOS^ CO! INT INT CF!
+  | REC^
+  | FCC^ ) INT 
+  | FPOS^ CO! INT INT CF!
+  | VE^
+  | LC^
+  | BC^
 	;
    

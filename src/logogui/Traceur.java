@@ -5,6 +5,7 @@
  * Window - Preferences - Java - Code Style - Code Templates
  */
 package logogui;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 
@@ -21,6 +22,8 @@ public class Traceur {
 	private double posx = initx, posy = inity; // position courante
 	private int angle = 90;
 	private double teta;
+	private final int SIZE = 1000;
+	private boolean drawing = true;
 	
 	public Traceur() {
 		setTeta();
@@ -43,18 +46,23 @@ public class Traceur {
 		return (int) Math.round(a);
 	}
 	
-	public void avance(double r) {
+	private void setTeta() {
+		teta = Math.toRadians(angle);
+	}
+	
+	public void av(double r) {
 		double a = posx + r * Math.cos(teta) ;
 		double b = posy - r * Math.sin(teta) ;
 		int x1 = toInt(posx);
 		int y1 = toInt(posy);
 		int x2 = toInt(a);
 		int y2 = toInt(b);
-		g2d.drawLine(x1,y1,x2,y2);
+		if(drawing)
+			g2d.drawLine(x1,y1,x2,y2);
 		posx = a;
 		posy = b;
 	}
-	
+
 	public void td(double r) {
 		angle = (angle - toInt(r)) % 360;
 		setTeta();
@@ -68,12 +76,62 @@ public class Traceur {
 	public void rec(double r) {
 		angle = (angle + 180) % 360;
 		setTeta();
-		avance(r);
+		av(r);
 		angle = (angle - 180) % 360;
 	}
 	
-	
-	private void setTeta() {
-		teta = Math.toRadians(angle);
+	public void fpos(double m1, double m2) {
+		posx = m1;
+		posy = m2;
+		angle = 90;
+		setTeta();
 	}
+	
+	public void ve() {
+    	if (g2d != null) {
+    		g2d.clearRect(0, 0, SIZE, SIZE);
+    	}
+	}
+	
+	public void lc() {
+		if(drawing)
+			drawing = false;
+	}
+	
+	public void bc() {
+		if(!drawing)
+			drawing = true;
+	}
+	
+	public void fcc(int n) {
+		int col = n % 8;
+		
+		switch(col) {
+		case 1:
+			g2d.setColor(Color.RED);
+			break;
+		case 2:
+			g2d.setColor(Color.GREEN);
+			break;
+		case 3:
+			g2d.setColor(Color.YELLOW);
+			break;
+		case 4:
+			g2d.setColor(Color.BLUE);
+			break;
+		case 5:
+			g2d.setColor(Color.CYAN);
+			break;	
+		case 6:
+			g2d.setColor(Color.ORANGE);
+			break;
+		case 7:
+			g2d.setColor(Color.MAGENTA);
+			break;
+		case 0:
+			g2d.setColor(Color.BLACK);
+			break;
+		}
+	}
+	
 }

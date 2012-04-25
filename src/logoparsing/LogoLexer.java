@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-04-12 12:15:16
+// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-04-25 22:54:10
 
   package logoparsing;
 
@@ -12,15 +12,19 @@ import java.util.ArrayList;
 public class LogoLexer extends Lexer {
     public static final int EOF=-1;
     public static final int AV=4;
-    public static final int CF=5;
-    public static final int CO=6;
-    public static final int FPOS=7;
-    public static final int INT=8;
-    public static final int PROGRAMME=9;
-    public static final int REC=10;
-    public static final int TD=11;
-    public static final int TG=12;
-    public static final int WS=13;
+    public static final int BC=5;
+    public static final int CF=6;
+    public static final int CO=7;
+    public static final int FCC=8;
+    public static final int FPOS=9;
+    public static final int INT=10;
+    public static final int LC=11;
+    public static final int PROGRAMME=12;
+    public static final int REC=13;
+    public static final int TD=14;
+    public static final int TG=15;
+    public static final int VE=16;
+    public static final int WS=17;
 
     // delegates
     // delegators
@@ -60,13 +64,36 @@ public class LogoLexer extends Lexer {
     }
     // $ANTLR end "AV"
 
+    // $ANTLR start "BC"
+    public final void mBC() throws RecognitionException {
+        try {
+            int _type = BC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:4: ( 'BC' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:6: 'BC'
+            {
+            match("BC"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "BC"
+
     // $ANTLR start "CF"
     public final void mCF() throws RecognitionException {
         try {
             int _type = CF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:4: ( ']' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:7:6: ']'
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:4: ( ']' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:6: ']'
             {
             match(']'); 
 
@@ -86,8 +113,8 @@ public class LogoLexer extends Lexer {
         try {
             int _type = CO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:4: ( '[' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:8:6: '['
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:4: ( '[' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:6: '['
             {
             match('['); 
 
@@ -102,13 +129,36 @@ public class LogoLexer extends Lexer {
     }
     // $ANTLR end "CO"
 
+    // $ANTLR start "FCC"
+    public final void mFCC() throws RecognitionException {
+        try {
+            int _type = FCC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:5: ( 'FCC' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:7: 'FCC'
+            {
+            match("FCC"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "FCC"
+
     // $ANTLR start "FPOS"
     public final void mFPOS() throws RecognitionException {
         try {
             int _type = FPOS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:6: ( 'FPOS' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:9:8: 'FPOS'
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:6: ( 'FPOS' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:8: 'FPOS'
             {
             match("FPOS"); 
 
@@ -125,13 +175,36 @@ public class LogoLexer extends Lexer {
     }
     // $ANTLR end "FPOS"
 
+    // $ANTLR start "LC"
+    public final void mLC() throws RecognitionException {
+        try {
+            int _type = LC;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:4: ( 'LC' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:6: 'LC'
+            {
+            match("LC"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "LC"
+
     // $ANTLR start "REC"
     public final void mREC() throws RecognitionException {
         try {
             int _type = REC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:5: ( 'REC' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:10:7: 'REC'
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:13:5: ( 'REC' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:13:7: 'REC'
             {
             match("REC"); 
 
@@ -153,8 +226,8 @@ public class LogoLexer extends Lexer {
         try {
             int _type = TD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:4: ( 'TD' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:11:6: 'TD'
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:14:4: ( 'TD' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:14:6: 'TD'
             {
             match("TD"); 
 
@@ -176,8 +249,8 @@ public class LogoLexer extends Lexer {
         try {
             int _type = TG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:4: ( 'TG' )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:12:6: 'TG'
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:15:4: ( 'TG' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:15:6: 'TG'
             {
             match("TG"); 
 
@@ -194,15 +267,38 @@ public class LogoLexer extends Lexer {
     }
     // $ANTLR end "TG"
 
+    // $ANTLR start "VE"
+    public final void mVE() throws RecognitionException {
+        try {
+            int _type = VE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:16:4: ( 'VE' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:16:6: 'VE'
+            {
+            match("VE"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "VE"
+
     // $ANTLR start "INT"
     public final void mINT() throws RecognitionException {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:5: ( ( '0' .. '9' )+ )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:7: ( '0' .. '9' )+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:31:5: ( ( '0' .. '9' )+ )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:31:7: ( '0' .. '9' )+
             {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:27:7: ( '0' .. '9' )+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:31:7: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -257,10 +353,10 @@ public class LogoLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
             {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
             int cnt3=0;
             loop3:
             do {
@@ -287,26 +383,26 @@ public class LogoLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:10: ' '
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:10: ' '
             	    {
             	    match(' '); 
 
             	    }
             	    break;
             	case 2 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:14: '\\t'
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:14: '\\t'
             	    {
             	    match('\t'); 
 
             	    }
             	    break;
             	case 3 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:19: ( ( '\\r' )? '\\n' )
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:19: ( ( '\\r' )? '\\n' )
             	    {
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:19: ( ( '\\r' )? '\\n' )
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: ( '\\r' )? '\\n'
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:19: ( ( '\\r' )? '\\n' )
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:20: ( '\\r' )? '\\n'
             	    {
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: ( '\\r' )?
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:20: ( '\\r' )?
             	    int alt2=2;
             	    int LA2_0 = input.LA(1);
 
@@ -315,7 +411,7 @@ public class LogoLexer extends Lexer {
             	    }
             	    switch (alt2) {
             	        case 1 :
-            	            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:28:20: '\\r'
+            	            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:32:20: '\\r'
             	            {
             	            match('\r'); 
 
@@ -357,51 +453,80 @@ public class LogoLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:8: ( AV | CF | CO | FPOS | REC | TD | TG | INT | WS )
-        int alt4=9;
+        // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:8: ( AV | BC | CF | CO | FCC | FPOS | LC | REC | TD | TG | VE | INT | WS )
+        int alt4=13;
         switch ( input.LA(1) ) {
         case 'A':
             {
             alt4=1;
             }
             break;
-        case ']':
+        case 'B':
             {
             alt4=2;
             }
             break;
-        case '[':
+        case ']':
             {
             alt4=3;
             }
             break;
-        case 'F':
+        case '[':
             {
             alt4=4;
             }
             break;
-        case 'R':
+        case 'F':
             {
-            alt4=5;
-            }
-            break;
-        case 'T':
-            {
-            int LA4_6 = input.LA(2);
+            int LA4_5 = input.LA(2);
 
-            if ( (LA4_6=='D') ) {
-                alt4=6;
+            if ( (LA4_5=='C') ) {
+                alt4=5;
             }
-            else if ( (LA4_6=='G') ) {
-                alt4=7;
+            else if ( (LA4_5=='P') ) {
+                alt4=6;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 4, 6, input);
+                    new NoViableAltException("", 4, 5, input);
 
                 throw nvae;
 
             }
+            }
+            break;
+        case 'L':
+            {
+            alt4=7;
+            }
+            break;
+        case 'R':
+            {
+            alt4=8;
+            }
+            break;
+        case 'T':
+            {
+            int LA4_8 = input.LA(2);
+
+            if ( (LA4_8=='D') ) {
+                alt4=9;
+            }
+            else if ( (LA4_8=='G') ) {
+                alt4=10;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 4, 8, input);
+
+                throw nvae;
+
+            }
+            }
+            break;
+        case 'V':
+            {
+            alt4=11;
             }
             break;
         case '0':
@@ -415,7 +540,7 @@ public class LogoLexer extends Lexer {
         case '8':
         case '9':
             {
-            alt4=8;
+            alt4=12;
             }
             break;
         case '\t':
@@ -423,7 +548,7 @@ public class LogoLexer extends Lexer {
         case '\r':
         case ' ':
             {
-            alt4=9;
+            alt4=13;
             }
             break;
         default:
@@ -444,63 +569,95 @@ public class LogoLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:13: CF
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:13: BC
+                {
+                mBC(); 
+
+
+                }
+                break;
+            case 3 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:16: CF
                 {
                 mCF(); 
 
 
                 }
                 break;
-            case 3 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:16: CO
+            case 4 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:19: CO
                 {
                 mCO(); 
 
 
                 }
                 break;
-            case 4 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:19: FPOS
+            case 5 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:22: FCC
+                {
+                mFCC(); 
+
+
+                }
+                break;
+            case 6 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:26: FPOS
                 {
                 mFPOS(); 
 
 
                 }
                 break;
-            case 5 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:24: REC
+            case 7 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:31: LC
+                {
+                mLC(); 
+
+
+                }
+                break;
+            case 8 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:34: REC
                 {
                 mREC(); 
 
 
                 }
                 break;
-            case 6 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:28: TD
+            case 9 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:38: TD
                 {
                 mTD(); 
 
 
                 }
                 break;
-            case 7 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:31: TG
+            case 10 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:41: TG
                 {
                 mTG(); 
 
 
                 }
                 break;
-            case 8 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:34: INT
+            case 11 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:44: VE
+                {
+                mVE(); 
+
+
+                }
+                break;
+            case 12 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:47: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 9 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:38: WS
+            case 13 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:51: WS
                 {
                 mWS(); 
 

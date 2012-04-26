@@ -103,8 +103,8 @@ public class Traceur {
 			drawing = true;
 	}
 	
-	public void fcc(int n) {
-		int col = n % 8;
+	public void fcc(double n) {
+		int col = toInt(n) % 8;
 		
 		switch(col) {
 		case 1:
@@ -133,5 +133,11 @@ public class Traceur {
 			break;
 		}
 	}
+	
+	public void fcap(double m) {
+		angle = toInt(m);
+		setTeta();
+	}
+	
 	
 }

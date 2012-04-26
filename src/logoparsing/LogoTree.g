@@ -24,20 +24,27 @@ options {
  prog : ^(PROGRAMME (instruction)*) 
      {Log.appendnl("Programme principal");}
 ;
+
+exp returns [double v]
+	 :
+	^(PLUS x = exp y = exp) { $v = $x.v + $y.v; System.out.println($v); }
+	| ^(MOINS x = exp y = exp) { $v = $x.v - $y.v; }
+	| ^(MULTI x = exp y = exp) { $v = $x.v * $y.v; }
+	| ^(DIVI x=exp y=exp) {$v = $x.v / $y.v;}
+	| ^(POW x=exp y=exp) {$v = Math.pow($x.v, $y.v);}
+	| INT {$v = Double.parseDouble($INT.text);}
+	;
+
 instruction :
-   ^(AV a = INT) {double m = Double.parseDouble($a.getText()); traceur.av(m);}
- | ^(TD a = INT) {double m = Double.parseDouble($a.getText()); traceur.td(m);}
- | ^(TG a = INT) {double m = Double.parseDouble($a.getText()); traceur.tg(m);}
- | ^(REC a = INT) {double m = Double.parseDouble($a.getText()); traceur.rec(m);}
- | ^(FPOS a = INT b = INT) 
- 	{
- 		double m1 = Double.parseDouble($a.getText());
- 		double m2 = Double.parseDouble($b.getText());
- 		traceur.fpos(m1, m2);
- 	}
+   ^(AV a = exp) {traceur.av($a.v);}
+ |^(TD a = exp) {traceur.td($a.v);}
+ | ^(TG a = exp) {traceur.tg($a.v);}
+ | ^(REC a = exp) {traceur.rec($a.v);}
+ | ^(FPOS a = exp b = exp) { traceur.fpos($a.v, $b.v);}
  | VE {traceur.ve();}
  | LC {traceur.lc();}
  | BC {traceur.bc();}
- | ^(FCC a = INT) {int c = Integer.parseInt(a.getText()); traceur.fcc(c);}
+ | ^(FCC a = exp) {traceur.fcc($a.v);}
+ | ^(FCAP a = exp) { traceur.fcap($a.v);}
 ;
     

@@ -56,6 +56,7 @@ instruction
 	 | ^(FCAP a = exp) { traceur.fcap($a.v);}
 	 | repete
 	 | donne
+	 | si
 	 | a=exp {Log.appendnl("Eval Expr: " + Double.toString($a.v));}
 	 | c=bool {Log.appendnl(Boolean.toString($c.bo));}
 	;
@@ -89,6 +90,26 @@ repete
 	}	
 	;
 
+si	
+@init {
+	int mark_list1 = 0;
+	int mark_list2 = 0;
+}
+	:	
+	^(SI b=bool {mark_list1 = input.mark();} . {mark_list2 = input.mark();} .)
+	{
+		if($b.bo) {
+			push(mark_list1);
+			liste_instructions();
+			pop();
+		} else {
+			push(mark_list2);
+			liste_instructions();
+			pop();
+		}
+	}	
+	;
+	
 id returns [String rid]
 	:
 	^(IDENTIFICATEUR ID) {$rid = $ID.text;}
@@ -104,7 +125,7 @@ donne
 	^(DONNE i = id n = exp) 
 		{ 
 			table_id.setId($i.rid, (Double)$n.v);
-			Log.appendnl("Nouvelle variable: " + $id.rid + "	Value: " + Double.toString($n.v));	
+			Log.appendnl("Nouvelle variable: " + $id.rid + "	Value: " + Double.toString($n.v));
 		}
 	;
 

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-05-24 12:11:42
+// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-05-24 23:50:41
 
   package logoparsing;
   import logogui.Log;
@@ -218,7 +218,7 @@ public TreeAdaptor getTreeAdaptor() {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0 >= AV && LA1_0 <= BC)||LA1_0==DEUX_POINTS||LA1_0==DONNE||(LA1_0 >= FCAP && LA1_0 <= FPOS)||(LA1_0 >= INT && LA1_0 <= LC)||LA1_0==PARAMO||(LA1_0 >= REC && LA1_0 <= REPETE)||(LA1_0 >= TD && LA1_0 <= VE)) ) {
+                if ( ((LA1_0 >= AV && LA1_0 <= BC)||LA1_0==DEUX_POINTS||LA1_0==DONNE||(LA1_0 >= FCAP && LA1_0 <= FPOS)||(LA1_0 >= INT && LA1_0 <= LC)||LA1_0==PARAMO||(LA1_0 >= REC && LA1_0 <= SI)||(LA1_0 >= TD && LA1_0 <= VE)) ) {
                     alt1=1;
                 }
 
@@ -1179,42 +1179,81 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "bool"
 
 
-    public static class id_return extends ParserRuleReturnScope {
+    public static class si_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "id"
-    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:125:1: id : GUILLEMET ! ID ;
-    public final LogoParser.id_return id() throws RecognitionException {
-        LogoParser.id_return retval = new LogoParser.id_return();
+    // $ANTLR start "si"
+    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:121:1: si : SI ^ bool CO ! liste_evaluation CF ! CO ! liste_evaluation CF !;
+    public final LogoParser.si_return si() throws RecognitionException {
+        LogoParser.si_return retval = new LogoParser.si_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
-        Token GUILLEMET33=null;
-        Token ID34=null;
+        Token SI33=null;
+        Token CO35=null;
+        Token CF37=null;
+        Token CO38=null;
+        Token CF40=null;
+        LogoParser.bool_return bool34 =null;
 
-        Object GUILLEMET33_tree=null;
-        Object ID34_tree=null;
+        LogoParser.liste_evaluation_return liste_evaluation36 =null;
+
+        LogoParser.liste_evaluation_return liste_evaluation39 =null;
+
+
+        Object SI33_tree=null;
+        Object CO35_tree=null;
+        Object CF37_tree=null;
+        Object CO38_tree=null;
+        Object CF40_tree=null;
 
         try {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:125:4: ( GUILLEMET ! ID )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:126:2: GUILLEMET ! ID
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:121:4: ( SI ^ bool CO ! liste_evaluation CF ! CO ! liste_evaluation CF !)
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:122:2: SI ^ bool CO ! liste_evaluation CF ! CO ! liste_evaluation CF !
             {
             root_0 = (Object)adaptor.nil();
 
 
-            GUILLEMET33=(Token)match(input,GUILLEMET,FOLLOW_GUILLEMET_in_id662); 
-
-            ID34=(Token)match(input,ID,FOLLOW_ID_in_id665); 
-            ID34_tree = 
-            (Object)adaptor.create(ID34)
+            SI33=(Token)match(input,SI,FOLLOW_SI_in_si658); 
+            SI33_tree = 
+            (Object)adaptor.create(SI33)
             ;
-            adaptor.addChild(root_0, ID34_tree);
+            root_0 = (Object)adaptor.becomeRoot(SI33_tree, root_0);
 
+
+            pushFollow(FOLLOW_bool_in_si661);
+            bool34=bool();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, bool34.getTree());
+
+            CO35=(Token)match(input,CO,FOLLOW_CO_in_si663); 
+
+            pushFollow(FOLLOW_liste_evaluation_in_si666);
+            liste_evaluation36=liste_evaluation();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, liste_evaluation36.getTree());
+
+            CF37=(Token)match(input,CF,FOLLOW_CF_in_si668); 
+
+            CO38=(Token)match(input,CO,FOLLOW_CO_in_si671); 
+
+            pushFollow(FOLLOW_liste_evaluation_in_si674);
+            liste_evaluation39=liste_evaluation();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, liste_evaluation39.getTree());
+
+            CF40=(Token)match(input,CF,FOLLOW_CF_in_si676); 
 
             }
 
@@ -1237,7 +1276,7 @@ public TreeAdaptor getTreeAdaptor() {
         }
         return retval;
     }
-    // $ANTLR end "id"
+    // $ANTLR end "si"
 
 
     public static class donne_id_return extends ParserRuleReturnScope {
@@ -1247,7 +1286,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "donne_id"
-    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:129:1: donne_id : DONNE id expr -> ^( DONNE ^( IDENTIFICATEUR id ) expr ) ;
+    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:126:1: donne_id : DONNE i= id expr -> ^( DONNE ^( IDENTIFICATEUR id ) expr ) ;
     public final LogoParser.donne_id_return donne_id() throws RecognitionException {
         LogoParser.donne_id_return retval = new LogoParser.donne_id_return();
         retval.start = input.LT(1);
@@ -1255,40 +1294,44 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token DONNE35=null;
-        LogoParser.id_return id36 =null;
+        Token DONNE41=null;
+        LogoParser.id_return i =null;
 
-        LogoParser.expr_return expr37 =null;
+        LogoParser.expr_return expr42 =null;
 
 
-        Object DONNE35_tree=null;
+        Object DONNE41_tree=null;
         RewriteRuleTokenStream stream_DONNE=new RewriteRuleTokenStream(adaptor,"token DONNE");
         RewriteRuleSubtreeStream stream_id=new RewriteRuleSubtreeStream(adaptor,"rule id");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:130:2: ( DONNE id expr -> ^( DONNE ^( IDENTIFICATEUR id ) expr ) )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:131:2: DONNE id expr
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:127:2: ( DONNE i= id expr -> ^( DONNE ^( IDENTIFICATEUR id ) expr ) )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:128:2: DONNE i= id expr
             {
-            DONNE35=(Token)match(input,DONNE,FOLLOW_DONNE_in_donne_id679);  
-            stream_DONNE.add(DONNE35);
+            DONNE41=(Token)match(input,DONNE,FOLLOW_DONNE_in_donne_id691);  
+            stream_DONNE.add(DONNE41);
 
 
-            pushFollow(FOLLOW_id_in_donne_id681);
-            id36=id();
-
-            state._fsp--;
-
-            stream_id.add(id36.getTree());
-
-            pushFollow(FOLLOW_expr_in_donne_id683);
-            expr37=expr();
+            pushFollow(FOLLOW_id_in_donne_id695);
+            i=id();
 
             state._fsp--;
 
-            stream_expr.add(expr37.getTree());
+            stream_id.add(i.getTree());
+
+            pushFollow(FOLLOW_expr_in_donne_id697);
+            expr42=expr();
+
+            state._fsp--;
+
+            stream_expr.add(expr42.getTree());
+
+
+            		table_id.setId((i!=null?i.rid:null), (double)0);	// occupy a place in the id table
+            	
 
             // AST REWRITE
-            // elements: DONNE, expr, id
+            // elements: expr, DONNE, id
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1298,16 +1341,16 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 131:16: -> ^( DONNE ^( IDENTIFICATEUR id ) expr )
+            // 132:7: -> ^( DONNE ^( IDENTIFICATEUR id ) expr )
             {
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:131:19: ^( DONNE ^( IDENTIFICATEUR id ) expr )
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:132:10: ^( DONNE ^( IDENTIFICATEUR id ) expr )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
                 stream_DONNE.nextNode()
                 , root_1);
 
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:131:27: ^( IDENTIFICATEUR id )
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:132:18: ^( IDENTIFICATEUR id )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
@@ -1353,6 +1396,70 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "donne_id"
 
 
+    public static class id_return extends ParserRuleReturnScope {
+        public String rid;
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "id"
+    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:135:1: id returns [String rid] : GUILLEMET ! ID ;
+    public final LogoParser.id_return id() throws RecognitionException {
+        LogoParser.id_return retval = new LogoParser.id_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token GUILLEMET43=null;
+        Token ID44=null;
+
+        Object GUILLEMET43_tree=null;
+        Object ID44_tree=null;
+
+        try {
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:136:2: ( GUILLEMET ! ID )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:137:2: GUILLEMET ! ID
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            GUILLEMET43=(Token)match(input,GUILLEMET,FOLLOW_GUILLEMET_in_id739); 
+
+            ID44=(Token)match(input,ID,FOLLOW_ID_in_id742); 
+            ID44_tree = 
+            (Object)adaptor.create(ID44)
+            ;
+            adaptor.addChild(root_0, ID44_tree);
+
+
+            retval.rid = (ID44!=null?ID44.getText():null);
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "id"
+
+
     public static class eval_id_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
@@ -1360,7 +1467,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "eval_id"
-    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:134:1: eval_id : DEUX_POINTS ID -> ^( EVAL ID ) ;
+    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:140:1: eval_id : DEUX_POINTS ID -> ^( EVAL ID ) ;
     public final LogoParser.eval_id_return eval_id() throws RecognitionException {
         LogoParser.eval_id_return retval = new LogoParser.eval_id_return();
         retval.start = input.LT(1);
@@ -1368,30 +1475,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token DEUX_POINTS38=null;
-        Token ID39=null;
+        Token DEUX_POINTS45=null;
+        Token ID46=null;
 
-        Object DEUX_POINTS38_tree=null;
-        Object ID39_tree=null;
+        Object DEUX_POINTS45_tree=null;
+        Object ID46_tree=null;
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_DEUX_POINTS=new RewriteRuleTokenStream(adaptor,"token DEUX_POINTS");
 
         try {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:135:2: ( DEUX_POINTS ID -> ^( EVAL ID ) )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:136:2: DEUX_POINTS ID
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:141:2: ( DEUX_POINTS ID -> ^( EVAL ID ) )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:142:2: DEUX_POINTS ID
             {
-            DEUX_POINTS38=(Token)match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_eval_id710);  
-            stream_DEUX_POINTS.add(DEUX_POINTS38);
+            DEUX_POINTS45=(Token)match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_eval_id757);  
+            stream_DEUX_POINTS.add(DEUX_POINTS45);
 
 
-            ID39=(Token)match(input,ID,FOLLOW_ID_in_eval_id712);  
-            stream_ID.add(ID39);
+            ID46=(Token)match(input,ID,FOLLOW_ID_in_eval_id759);  
+            stream_ID.add(ID46);
 
 
 
-            		if(!table_id.checkId((ID39!=null?ID39.getText():null))){
+            		if(!table_id.checkId((ID46!=null?ID46.getText():null))){
             			setValide(false);
-            			Log.appendnl("Identificateur non défini: " + (ID39!=null?ID39.getText():null));
+            			System.out.println(Double.toString(table_id.getId((ID46!=null?ID46.getText():null))));
+            			Log.appendnl("Identificateur non défini: " + (ID46!=null?ID46.getText():null));
             		}
             	
 
@@ -1406,9 +1514,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 143:7: -> ^( EVAL ID )
+            // 150:7: -> ^( EVAL ID )
             {
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:143:10: ^( EVAL ID )
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:150:10: ^( EVAL ID )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -1458,7 +1566,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instruction"
-    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:146:1: instruction : ( ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr | FPOS ^ CO ! expr expr CF !| VE | LC | BC | repete | donne_id | bool );
+    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:153:1: instruction : ( ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr | FPOS ^ CO ! expr expr CF !| VE | LC | BC | repete | donne_id | bool | si );
     public final LogoParser.instruction_return instruction() throws RecognitionException {
         LogoParser.instruction_return retval = new LogoParser.instruction_return();
         retval.start = input.LT(1);
@@ -1466,47 +1574,49 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token AV40=null;
-        Token TD41=null;
-        Token TG42=null;
-        Token REC43=null;
-        Token FCC44=null;
-        Token FCAP45=null;
-        Token FPOS47=null;
-        Token CO48=null;
-        Token CF51=null;
-        Token VE52=null;
-        Token LC53=null;
-        Token BC54=null;
-        LogoParser.expr_return expr46 =null;
+        Token AV47=null;
+        Token TD48=null;
+        Token TG49=null;
+        Token REC50=null;
+        Token FCC51=null;
+        Token FCAP52=null;
+        Token FPOS54=null;
+        Token CO55=null;
+        Token CF58=null;
+        Token VE59=null;
+        Token LC60=null;
+        Token BC61=null;
+        LogoParser.expr_return expr53 =null;
 
-        LogoParser.expr_return expr49 =null;
+        LogoParser.expr_return expr56 =null;
 
-        LogoParser.expr_return expr50 =null;
+        LogoParser.expr_return expr57 =null;
 
-        LogoParser.repete_return repete55 =null;
+        LogoParser.repete_return repete62 =null;
 
-        LogoParser.donne_id_return donne_id56 =null;
+        LogoParser.donne_id_return donne_id63 =null;
 
-        LogoParser.bool_return bool57 =null;
+        LogoParser.bool_return bool64 =null;
+
+        LogoParser.si_return si65 =null;
 
 
-        Object AV40_tree=null;
-        Object TD41_tree=null;
-        Object TG42_tree=null;
-        Object REC43_tree=null;
-        Object FCC44_tree=null;
-        Object FCAP45_tree=null;
-        Object FPOS47_tree=null;
-        Object CO48_tree=null;
-        Object CF51_tree=null;
-        Object VE52_tree=null;
-        Object LC53_tree=null;
-        Object BC54_tree=null;
+        Object AV47_tree=null;
+        Object TD48_tree=null;
+        Object TG49_tree=null;
+        Object REC50_tree=null;
+        Object FCC51_tree=null;
+        Object FCAP52_tree=null;
+        Object FPOS54_tree=null;
+        Object CO55_tree=null;
+        Object CF58_tree=null;
+        Object VE59_tree=null;
+        Object LC60_tree=null;
+        Object BC61_tree=null;
 
         try {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:147:2: ( ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr | FPOS ^ CO ! expr expr CF !| VE | LC | BC | repete | donne_id | bool )
-            int alt10=8;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:154:2: ( ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr | FPOS ^ CO ! expr expr CF !| VE | LC | BC | repete | donne_id | bool | si )
+            int alt10=9;
             switch ( input.LA(1) ) {
             case AV:
             case FCAP:
@@ -1555,6 +1665,11 @@ public TreeAdaptor getTreeAdaptor() {
                 alt10=8;
                 }
                 break;
+            case SI:
+                {
+                alt10=9;
+                }
+                break;
             default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 10, 0, input);
@@ -1565,12 +1680,12 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt10) {
                 case 1 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:148:4: ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:155:4: ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^) expr
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:148:4: ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^)
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:155:4: ( AV ^| TD ^| TG ^| REC ^| FCC ^| FCAP ^)
                     int alt9=6;
                     switch ( input.LA(1) ) {
                     case AV:
@@ -1613,73 +1728,73 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt9) {
                         case 1 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:148:6: AV ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:155:6: AV ^
                             {
-                            AV40=(Token)match(input,AV,FOLLOW_AV_in_instruction748); 
-                            AV40_tree = 
-                            (Object)adaptor.create(AV40)
+                            AV47=(Token)match(input,AV,FOLLOW_AV_in_instruction795); 
+                            AV47_tree = 
+                            (Object)adaptor.create(AV47)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(AV40_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(AV47_tree, root_0);
 
 
                             }
                             break;
                         case 2 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:149:6: TD ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:156:6: TD ^
                             {
-                            TD41=(Token)match(input,TD,FOLLOW_TD_in_instruction758); 
-                            TD41_tree = 
-                            (Object)adaptor.create(TD41)
+                            TD48=(Token)match(input,TD,FOLLOW_TD_in_instruction805); 
+                            TD48_tree = 
+                            (Object)adaptor.create(TD48)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(TD41_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(TD48_tree, root_0);
 
 
                             }
                             break;
                         case 3 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:150:6: TG ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:157:6: TG ^
                             {
-                            TG42=(Token)match(input,TG,FOLLOW_TG_in_instruction766); 
-                            TG42_tree = 
-                            (Object)adaptor.create(TG42)
+                            TG49=(Token)match(input,TG,FOLLOW_TG_in_instruction813); 
+                            TG49_tree = 
+                            (Object)adaptor.create(TG49)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(TG42_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(TG49_tree, root_0);
 
 
                             }
                             break;
                         case 4 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:151:6: REC ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:158:6: REC ^
                             {
-                            REC43=(Token)match(input,REC,FOLLOW_REC_in_instruction774); 
-                            REC43_tree = 
-                            (Object)adaptor.create(REC43)
+                            REC50=(Token)match(input,REC,FOLLOW_REC_in_instruction821); 
+                            REC50_tree = 
+                            (Object)adaptor.create(REC50)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(REC43_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(REC50_tree, root_0);
 
 
                             }
                             break;
                         case 5 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:152:6: FCC ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:159:6: FCC ^
                             {
-                            FCC44=(Token)match(input,FCC,FOLLOW_FCC_in_instruction782); 
-                            FCC44_tree = 
-                            (Object)adaptor.create(FCC44)
+                            FCC51=(Token)match(input,FCC,FOLLOW_FCC_in_instruction829); 
+                            FCC51_tree = 
+                            (Object)adaptor.create(FCC51)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(FCC44_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(FCC51_tree, root_0);
 
 
                             }
                             break;
                         case 6 :
-                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:153:6: FCAP ^
+                            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:160:6: FCAP ^
                             {
-                            FCAP45=(Token)match(input,FCAP,FOLLOW_FCAP_in_instruction791); 
-                            FCAP45_tree = 
-                            (Object)adaptor.create(FCAP45)
+                            FCAP52=(Token)match(input,FCAP,FOLLOW_FCAP_in_instruction838); 
+                            FCAP52_tree = 
+                            (Object)adaptor.create(FCAP52)
                             ;
-                            root_0 = (Object)adaptor.becomeRoot(FCAP45_tree, root_0);
+                            root_0 = (Object)adaptor.becomeRoot(FCAP52_tree, root_0);
 
 
                             }
@@ -1688,135 +1803,150 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_expr_in_instruction795);
-                    expr46=expr();
+                    pushFollow(FOLLOW_expr_in_instruction842);
+                    expr53=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr46.getTree());
+                    adaptor.addChild(root_0, expr53.getTree());
 
                     }
                     break;
                 case 2 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:154:6: FPOS ^ CO ! expr expr CF !
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:161:6: FPOS ^ CO ! expr expr CF !
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    FPOS47=(Token)match(input,FPOS,FOLLOW_FPOS_in_instruction802); 
-                    FPOS47_tree = 
-                    (Object)adaptor.create(FPOS47)
+                    FPOS54=(Token)match(input,FPOS,FOLLOW_FPOS_in_instruction849); 
+                    FPOS54_tree = 
+                    (Object)adaptor.create(FPOS54)
                     ;
-                    root_0 = (Object)adaptor.becomeRoot(FPOS47_tree, root_0);
+                    root_0 = (Object)adaptor.becomeRoot(FPOS54_tree, root_0);
 
 
-                    CO48=(Token)match(input,CO,FOLLOW_CO_in_instruction805); 
+                    CO55=(Token)match(input,CO,FOLLOW_CO_in_instruction852); 
 
-                    pushFollow(FOLLOW_expr_in_instruction808);
-                    expr49=expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, expr49.getTree());
-
-                    pushFollow(FOLLOW_expr_in_instruction810);
-                    expr50=expr();
+                    pushFollow(FOLLOW_expr_in_instruction855);
+                    expr56=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr50.getTree());
+                    adaptor.addChild(root_0, expr56.getTree());
 
-                    CF51=(Token)match(input,CF,FOLLOW_CF_in_instruction812); 
+                    pushFollow(FOLLOW_expr_in_instruction857);
+                    expr57=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr57.getTree());
+
+                    CF58=(Token)match(input,CF,FOLLOW_CF_in_instruction859); 
 
                     }
                     break;
                 case 3 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:155:6: VE
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:162:6: VE
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    VE52=(Token)match(input,VE,FOLLOW_VE_in_instruction820); 
-                    VE52_tree = 
-                    (Object)adaptor.create(VE52)
+                    VE59=(Token)match(input,VE,FOLLOW_VE_in_instruction867); 
+                    VE59_tree = 
+                    (Object)adaptor.create(VE59)
                     ;
-                    adaptor.addChild(root_0, VE52_tree);
+                    adaptor.addChild(root_0, VE59_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:156:6: LC
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:163:6: LC
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    LC53=(Token)match(input,LC,FOLLOW_LC_in_instruction827); 
-                    LC53_tree = 
-                    (Object)adaptor.create(LC53)
+                    LC60=(Token)match(input,LC,FOLLOW_LC_in_instruction874); 
+                    LC60_tree = 
+                    (Object)adaptor.create(LC60)
                     ;
-                    adaptor.addChild(root_0, LC53_tree);
+                    adaptor.addChild(root_0, LC60_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:157:6: BC
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:164:6: BC
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    BC54=(Token)match(input,BC,FOLLOW_BC_in_instruction834); 
-                    BC54_tree = 
-                    (Object)adaptor.create(BC54)
+                    BC61=(Token)match(input,BC,FOLLOW_BC_in_instruction881); 
+                    BC61_tree = 
+                    (Object)adaptor.create(BC61)
                     ;
-                    adaptor.addChild(root_0, BC54_tree);
+                    adaptor.addChild(root_0, BC61_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:158:6: repete
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:165:6: repete
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_repete_in_instruction841);
-                    repete55=repete();
+                    pushFollow(FOLLOW_repete_in_instruction888);
+                    repete62=repete();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, repete55.getTree());
+                    adaptor.addChild(root_0, repete62.getTree());
 
                     }
                     break;
                 case 7 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:159:6: donne_id
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:166:6: donne_id
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_donne_id_in_instruction848);
-                    donne_id56=donne_id();
+                    pushFollow(FOLLOW_donne_id_in_instruction895);
+                    donne_id63=donne_id();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, donne_id56.getTree());
+                    adaptor.addChild(root_0, donne_id63.getTree());
 
                     }
                     break;
                 case 8 :
-                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:160:6: bool
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:167:6: bool
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bool_in_instruction855);
-                    bool57=bool();
+                    pushFollow(FOLLOW_bool_in_instruction902);
+                    bool64=bool();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bool57.getTree());
+                    adaptor.addChild(root_0, bool64.getTree());
+
+                    }
+                    break;
+                case 9 :
+                    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:168:6: si
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_si_in_instruction909);
+                    si65=si();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, si65.getTree());
 
                     }
                     break;
@@ -1849,7 +1979,7 @@ public TreeAdaptor getTreeAdaptor() {
  
 
     public static final BitSet FOLLOW_liste_instructions_in_programme414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instruction_in_liste_instructions438 = new BitSet(new long[]{0x00000718430728C2L});
+    public static final BitSet FOLLOW_instruction_in_liste_instructions438 = new BitSet(new long[]{0x00000738430728C2L});
     public static final BitSet FOLLOW_sumExpr_in_expr454 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_multExpr_in_sumExpr465 = new BitSet(new long[]{0x0000000088000002L});
     public static final BitSet FOLLOW_PLUS_in_sumExpr469 = new BitSet(new long[]{0x0000000041000800L});
@@ -1870,7 +2000,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_liste_instructions_in_liste_evaluation560 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_REPETE_in_repete580 = new BitSet(new long[]{0x0000000041000800L});
     public static final BitSet FOLLOW_expr_in_repete583 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_CO_in_repete585 = new BitSet(new long[]{0x00000718430728C0L});
+    public static final BitSet FOLLOW_CO_in_repete585 = new BitSet(new long[]{0x00000738430728C0L});
     public static final BitSet FOLLOW_liste_evaluation_in_repete588 = new BitSet(new long[]{0x0000000000000200L});
     public static final BitSet FOLLOW_CF_in_repete590 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_bool604 = new BitSet(new long[]{0x000000C000C04000L});
@@ -1880,30 +2010,39 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_SUP_EGALE_in_bool633 = new BitSet(new long[]{0x0000000041000800L});
     public static final BitSet FOLLOW_INF_EGALE_in_bool641 = new BitSet(new long[]{0x0000000041000800L});
     public static final BitSet FOLLOW_expr_in_bool647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_GUILLEMET_in_id662 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_id665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DONNE_in_donne_id679 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_id_in_donne_id681 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_expr_in_donne_id683 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEUX_POINTS_in_eval_id710 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_eval_id712 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AV_in_instruction748 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_TD_in_instruction758 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_TG_in_instruction766 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_REC_in_instruction774 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_FCC_in_instruction782 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_FCAP_in_instruction791 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_expr_in_instruction795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FPOS_in_instruction802 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_CO_in_instruction805 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_expr_in_instruction808 = new BitSet(new long[]{0x0000000041000800L});
-    public static final BitSet FOLLOW_expr_in_instruction810 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_CF_in_instruction812 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VE_in_instruction820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LC_in_instruction827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BC_in_instruction834 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_repete_in_instruction841 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_donne_id_in_instruction848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bool_in_instruction855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SI_in_si658 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_bool_in_si661 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_CO_in_si663 = new BitSet(new long[]{0x00000738430728C0L});
+    public static final BitSet FOLLOW_liste_evaluation_in_si666 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_CF_in_si668 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_CO_in_si671 = new BitSet(new long[]{0x00000738430728C0L});
+    public static final BitSet FOLLOW_liste_evaluation_in_si674 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_CF_in_si676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DONNE_in_donne_id691 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_id_in_donne_id695 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_expr_in_donne_id697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_GUILLEMET_in_id739 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_id742 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEUX_POINTS_in_eval_id757 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_eval_id759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AV_in_instruction795 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_TD_in_instruction805 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_TG_in_instruction813 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_REC_in_instruction821 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_FCC_in_instruction829 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_FCAP_in_instruction838 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_expr_in_instruction842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FPOS_in_instruction849 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_CO_in_instruction852 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_expr_in_instruction855 = new BitSet(new long[]{0x0000000041000800L});
+    public static final BitSet FOLLOW_expr_in_instruction857 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_CF_in_instruction859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VE_in_instruction867 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LC_in_instruction874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BC_in_instruction881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_repete_in_instruction888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_donne_id_in_instruction895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bool_in_instruction902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_si_in_instruction909 = new BitSet(new long[]{0x0000000000000002L});
 
 }

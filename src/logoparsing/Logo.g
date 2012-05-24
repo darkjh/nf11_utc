@@ -118,17 +118,23 @@ bool
 	) expr
 	;
 
-/*si	:
-	SI^ PARAMO! expr PARAMF! AO! liste_evaluation AF! (AO! liste_evaluation AF!)?	
-	;*/
-
-id	:	
-	GUILLEMET! ID
+si	:
+	SI^ bool CO! liste_evaluation CF! CO! liste_evaluation CF!	
 	;
-		
+
+
 donne_id
 	:
-	DONNE id expr -> ^(DONNE ^(IDENTIFICATEUR id) expr)
+	DONNE i=id expr
+	{
+		table_id.setId($i.rid, (double)0);	// occupy a place in the id table
+	}
+						-> ^(DONNE ^(IDENTIFICATEUR id) expr)
+	;
+	
+id returns [String rid] 
+	:	
+	GUILLEMET! ID {$rid = $ID.text;}
 	;
 
 eval_id
@@ -137,6 +143,7 @@ eval_id
 	{
 		if(!table_id.checkId($ID.text)){
 			setValide(false);
+			System.out.println(Double.toString(table_id.getId($ID.text)));
 			Log.appendnl("Identificateur non défini: " + $ID.text);
 		}
 	}	
@@ -158,5 +165,6 @@ instruction
 	  | repete
 	  | donne_id
 	  | bool
+	  | si
 	;
    

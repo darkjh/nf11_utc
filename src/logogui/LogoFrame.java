@@ -53,7 +53,7 @@ public class LogoFrame extends JFrame {
 	private JTree jASTTree = null;
 	private boolean tabbedview = true;
 	
-	private LogoTableId table_id = new LogoTableId();
+	private LogoTableId table_id;
 	
 	/**
 	 * This is the default constructor
@@ -275,6 +275,7 @@ public class LogoFrame extends JFrame {
 		return jLogPane;
 	}
 	private void runParser() {
+	  table_id = new LogoTableId();
 	  String program = getJProgramArea().getText().toUpperCase();
 	  if (program.length() > 1 ) {
 		try {

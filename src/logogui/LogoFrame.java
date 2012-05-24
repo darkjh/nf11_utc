@@ -18,6 +18,7 @@ import javax.swing.tree.TreeModel;
 import logoparsing.LogoLexer;
 import logoparsing.LogoParser;
 import logoparsing.LogoTree;
+import logoparsing.LogoTableId;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -51,6 +52,8 @@ public class LogoFrame extends JFrame {
 	private JTextArea jLogArea = null;
 	private JTree jASTTree = null;
 	private boolean tabbedview = true;
+	
+	private LogoTableId table_id = new LogoTableId();
 	
 	/**
 	 * This is the default constructor
@@ -283,8 +286,10 @@ public class LogoFrame extends JFrame {
 			   // parser
 			   CommonTokenStream tokens = new CommonTokenStream(lexer);
 			   LogoParser parser = new LogoParser(tokens);
+			   	// donne l'acces a la table des indentificateurs
+			   parser.setTableId(table_id);
 			   LogoParser.programme_return r = parser.programme();
-		        // Resulting tree
+		       // Resulting tree
 		       
 		       boolean cont = parser.getValide(); 
 			   //tree
@@ -296,6 +301,8 @@ public class LogoFrame extends JFrame {
 				   // tree walker
 				   CommonTreeNodeStream nodes = new CommonTreeNodeStream(parseTree);
 				   LogoTree treewalker = new LogoTree(nodes);
+				   	// donne l'acces a la table des indentificateurs
+				   treewalker.setTableId(table_id);
 				   treewalker.initialize(getJLogoPane().getGraphics());
 				   treewalker.prog();
 			   } 

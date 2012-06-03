@@ -27,9 +27,9 @@ import org.antlr.runtime.tree.CommonTreeNodeStream;
 
 public class LogoFrame extends JFrame {
 	private int SIZE = 1000, // for clearing view
-	            X = 800, Y = 500;
+			X = 800, Y = 500;
 	private Dimension buttonDimension = new Dimension(150,10);
-    private String title = "Logo Frame";
+	private String title = "Logo Frame";
 	private static final long serialVersionUID = 1L;
 
 	// Panels
@@ -42,7 +42,7 @@ public class LogoFrame extends JFrame {
 	private JSplitPane jSplitASTPane = null;    // split pane with ast and graphic view
 	private JScrollPane jScrollASTPane = null;  // panel with AST tree
 	private JTabbedPane jTabDisplayPane = null; // tabbed pane with ast and graphic view 
-	
+
 	private JButton jRunButton = null;
 	private JButton jClearButton = null;
 	private JButton jClearLogButton = null;
@@ -52,9 +52,9 @@ public class LogoFrame extends JFrame {
 	private JTextArea jLogArea = null;
 	private JTree jASTTree = null;
 	private boolean tabbedview = true;
-	
+
 	private LogoTableId table_id;
-	
+
 	/**
 	 * This is the default constructor
 	 */
@@ -62,11 +62,11 @@ public class LogoFrame extends JFrame {
 		super();
 		initialize();
 	}
-	
+
 	private boolean isViewVisible() {
-	  return
-	    tabbedview && getJTabDisplayPanel().getSelectedComponent() == getJLogoPane()
-	    || !tabbedview;
+		return
+				tabbedview && getJTabDisplayPanel().getSelectedComponent() == getJLogoPane()
+				|| !tabbedview;
 	}
 	/**
 	 * This method initializes this
@@ -89,66 +89,66 @@ public class LogoFrame extends JFrame {
 	 * @return javax.swing.JPanel
 	 */
 	private void initComponents() {
-		 GroupLayout layout = new GroupLayout(jContentPane);
-		 jContentPane.setLayout(layout);
-		 
-		 // Turn on automatically adding gaps between components
-		 layout.setAutoCreateGaps(true);
-		 
-		 // Turn on automatically creating gaps between components that touch
-		 // the edge of the container and the container.
-		 layout.setAutoCreateContainerGaps(true);
-		 // Create a sequential group for the horizontal axis.
-		 
-		 GroupLayout.ParallelGroup hGroup = layout.createParallelGroup();
-		 hGroup.addComponent(getJlogoSplitPane());
-		 hGroup.addComponent(getJControlPane());
-		 layout.setHorizontalGroup(hGroup);
-		   
-		 // Create a sequential group for the vertical axis.
-		 GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
-		 vGroup.addComponent(getJlogoSplitPane());
-		 vGroup.addComponent(getJControlPane());
-		 layout.setVerticalGroup(vGroup);
+		GroupLayout layout = new GroupLayout(jContentPane);
+		jContentPane.setLayout(layout);
+
+		// Turn on automatically adding gaps between components
+		layout.setAutoCreateGaps(true);
+
+		// Turn on automatically creating gaps between components that touch
+		// the edge of the container and the container.
+		layout.setAutoCreateContainerGaps(true);
+		// Create a sequential group for the horizontal axis.
+
+		GroupLayout.ParallelGroup hGroup = layout.createParallelGroup();
+		hGroup.addComponent(getJlogoSplitPane());
+		hGroup.addComponent(getJControlPane());
+		layout.setHorizontalGroup(hGroup);
+
+		// Create a sequential group for the vertical axis.
+		GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
+		vGroup.addComponent(getJlogoSplitPane());
+		vGroup.addComponent(getJControlPane());
+		layout.setVerticalGroup(vGroup);
 	}
-	
+
 	private void initControlComponents() {
-		 GroupLayout layout = new GroupLayout(jControlPane);
-		 jControlPane.setLayout(layout);
-		 jControlPane.setName("Control");
-		 //JLabel fakeLabel = new JLabel("   ");
-		 // Turn on automatically adding gaps between components
-		 layout.setAutoCreateGaps(true);
-		 
-		 // Turn on automatically creating gaps between components that touch
-		 // the edge of the container and the container.
-		 layout.setAutoCreateContainerGaps(true);
-		 // Create a sequential group for the horizontal axis.
-		 
-		 GroupLayout.ParallelGroup hButtonGroup = layout.createParallelGroup(Alignment.LEADING);
-		 hButtonGroup.addComponent(getJRunButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
-		              .addComponent(getJClearButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
-		              .addComponent(getJClearLogButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
-		              .addComponent(getJChangeButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width);
-		   
-		 GroupLayout.SequentialGroup vButtonGroup = layout.createSequentialGroup();
-		 vButtonGroup.addComponent(getJRunButton());
-		 vButtonGroup.addComponent(getJClearButton());
-		 vButtonGroup.addComponent(getJClearLogButton());
-		 vButtonGroup.addComponent(getJChangeButton());
-		  
-		 GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
-		 hGroup.addGroup(hButtonGroup);
-		 hGroup.addComponent(getJLogPane());
-		 
-		 GroupLayout.ParallelGroup vGroup = layout.createParallelGroup();
-		 vGroup.addGroup(vButtonGroup);
-		 vGroup.addComponent(getJLogPane());
-		 
-		 layout.setHorizontalGroup(hGroup);
-		 layout.setVerticalGroup(vGroup);
+		GroupLayout layout = new GroupLayout(jControlPane);
+		jControlPane.setLayout(layout);
+		jControlPane.setName("Control");
+		//JLabel fakeLabel = new JLabel("   ");
+		// Turn on automatically adding gaps between components
+		layout.setAutoCreateGaps(true);
+
+		// Turn on automatically creating gaps between components that touch
+		// the edge of the container and the container.
+		layout.setAutoCreateContainerGaps(true);
+		// Create a sequential group for the horizontal axis.
+
+		GroupLayout.ParallelGroup hButtonGroup = layout.createParallelGroup(Alignment.LEADING);
+		hButtonGroup.addComponent(getJRunButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
+		.addComponent(getJClearButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
+		.addComponent(getJClearLogButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width)
+		.addComponent(getJChangeButton(),0, GroupLayout.DEFAULT_SIZE, buttonDimension.width);
+
+		GroupLayout.SequentialGroup vButtonGroup = layout.createSequentialGroup();
+		vButtonGroup.addComponent(getJRunButton());
+		vButtonGroup.addComponent(getJClearButton());
+		vButtonGroup.addComponent(getJClearLogButton());
+		vButtonGroup.addComponent(getJChangeButton());
+
+		GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
+		hGroup.addGroup(hButtonGroup);
+		hGroup.addComponent(getJLogPane());
+
+		GroupLayout.ParallelGroup vGroup = layout.createParallelGroup();
+		vGroup.addGroup(vButtonGroup);
+		vGroup.addComponent(getJLogPane());
+
+		layout.setHorizontalGroup(hGroup);
+		layout.setVerticalGroup(vGroup);
 	}
-	
+
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
@@ -182,13 +182,13 @@ public class LogoFrame extends JFrame {
 		}
 		return jProgScrollPane;
 	}
-	
+
 	private void initFrameSize() {
-   		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-   		int xwin = getSize().width;
-   		int ywin = getSize().height;
-   		setBounds((screenSize.width-xwin)/2, (screenSize.height-ywin)/2, xwin, ywin);
-   	}
+		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int xwin = getSize().width;
+		int ywin = getSize().height;
+		setBounds((screenSize.width-xwin)/2, (screenSize.height-ywin)/2, xwin, ywin);
+	}
 
 	private JButton getJRunButton() {
 		if (jRunButton == null) {
@@ -275,43 +275,45 @@ public class LogoFrame extends JFrame {
 		return jLogPane;
 	}
 	private void runParser() {
-	  table_id = new LogoTableId();
-	  String program = getJProgramArea().getText().toUpperCase();
-	  if (program.length() > 1 ) {
-		try {
-			// lexer	
-			   
-			   ANTLRStringStream str = new ANTLRStringStream(program);
-			   LogoLexer lexer = new LogoLexer(str);
-			   
-			   // parser
-			   CommonTokenStream tokens = new CommonTokenStream(lexer);
-			   LogoParser parser = new LogoParser(tokens);
-			   	// donne l'acces a la table des indentificateurs
-			   parser.setTableId(table_id);
-			   LogoParser.programme_return r = parser.programme();
-		       // Resulting tree
-		       
-		       boolean cont = parser.getValide(); 
-			   //tree
-		       CommonTree parseTree = (CommonTree) r.getTree();
-			   getJASTTree().setModel(new ASTtoTreeModelAdapter(parseTree));
-			   expandAll();
-			   
-			   if (isViewVisible() && cont) {
-				   // tree walker
-				   CommonTreeNodeStream nodes = new CommonTreeNodeStream(parseTree);
-				   LogoTree treewalker = new LogoTree(nodes);
-				   	// donne l'acces a la table des indentificateurs
-				   treewalker.setTableId(table_id);
-				   treewalker.initialize(getJLogoPane().getGraphics());
-				   treewalker.prog();
-			   } 
-		} catch(Exception ex) {
-			ex.printStackTrace();
+		// table des identificateurs
+		table_id = new LogoTableId();
+
+		String program = getJProgramArea().getText().toUpperCase();
+		if (program.length() > 1 ) {
+			try {
+				// lexer	
+
+				ANTLRStringStream str = new ANTLRStringStream(program);
+				LogoLexer lexer = new LogoLexer(str);
+
+				// parser
+				CommonTokenStream tokens = new CommonTokenStream(lexer);
+				LogoParser parser = new LogoParser(tokens);
+				// donne l'acces a la table des indentificateurs
+				parser.setTableId(table_id);
+				LogoParser.programme_return r = parser.programme();
+				// Resulting tree
+
+				boolean cont = parser.getValide(); 
+				//tree
+				CommonTree parseTree = (CommonTree) r.getTree();
+				getJASTTree().setModel(new ASTtoTreeModelAdapter(parseTree));
+				expandAll();
+
+				if (isViewVisible() && cont) {
+					// tree walker
+					CommonTreeNodeStream nodes = new CommonTreeNodeStream(parseTree);
+					LogoTree treewalker = new LogoTree(nodes);
+					// donne l'acces a la table des indentificateurs
+					treewalker.setTableId(table_id);
+					treewalker.initialize(getJLogoPane());
+					treewalker.prog();
+				} 
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}
 		}
-	  }
-	  else {Log.appendnl("Pas de programme");}
+		else {Log.appendnl("Pas de programme");}
 	}
 
 
@@ -374,40 +376,40 @@ public class LogoFrame extends JFrame {
 
 	public JPanel getJControlPane() {
 		if (jControlPane == null) {
-		  jControlPane = new JPanel();
-  		  jControlPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contrôle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, null));
-		  initControlComponents();
+			jControlPane = new JPanel();
+			jControlPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contrôle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, null));
+			initControlComponents();
 		}
 		return jControlPane;
 	}
 
-    private void clearDisplay() {
-    	Graphics g = getJLogoPane().getGraphics();
-    	if (isViewVisible()) {
-    		g.clearRect(0, 0, SIZE, SIZE);
-    	}
-    }
-    private void clearLog() {
-    	getJLogArea().setText("");
-    }
-    
-    private void expandAll() {
-	    int row = 0;
-	    while (row < getJASTTree().getRowCount()) {
-	    	getJASTTree().expandRow(row);
-	      row++;
-	    }
+	private void clearDisplay() {
+		Graphics g = getJLogoPane().getGraphics();
+		if (isViewVisible()) {
+			g.clearRect(0, 0, SIZE, SIZE);
+		}
 	}
-    private void permuteDisplay() {
-    	if (tabbedview) {
-    		jSplitASTPane = null;
-    		getJlogoSplitPane().setRightComponent(getJSplitASTPane()); 		
-    	}
-    	else {
-    		jTabDisplayPane = null;
-    		getJlogoSplitPane().setRightComponent(getJTabDisplayPanel());
-    	}
-    	getJlogoSplitPane().setDividerLocation(0.20);
-    	tabbedview = !tabbedview;
-    }
+	private void clearLog() {
+		getJLogArea().setText("");
+	}
+
+	private void expandAll() {
+		int row = 0;
+		while (row < getJASTTree().getRowCount()) {
+			getJASTTree().expandRow(row);
+			row++;
+		}
+	}
+	private void permuteDisplay() {
+		if (tabbedview) {
+			jSplitASTPane = null;
+			getJlogoSplitPane().setRightComponent(getJSplitASTPane()); 		
+		}
+		else {
+			jTabDisplayPane = null;
+			getJlogoSplitPane().setRightComponent(getJTabDisplayPanel());
+		}
+		getJlogoSplitPane().setDividerLocation(0.20);
+		tabbedview = !tabbedview;
+	}
 }

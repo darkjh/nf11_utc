@@ -12,9 +12,10 @@ options {
   Traceur traceur;
   LogoTableId table_id;
   
-  public void initialize(java.awt.Graphics g) {
-    traceur = Traceur.getInstance();
-    traceur.setGraphics(g);
+  public void initialize(javax.swing.JPanel logo) {
+  	traceur = Traceur.getInstance();
+    traceur.setGraphics(logo.getGraphics());
+    traceur.setInitPosition(logo.getWidth(), logo.getHeight());
   }
   public void push(int index) {
      ((CommonTreeNodeStream)input).push(index);

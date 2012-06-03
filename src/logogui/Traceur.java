@@ -42,6 +42,11 @@ public class Traceur {
 		g2d = (Graphics2D) g;	
 	}
 	
+	public void setInitPosition(double x, double y){
+		// init position au milieu
+		fpos(x/2, y/2);
+	}
+	
 	private int toInt(double a) {
 		return (int) Math.round(a);
 	}

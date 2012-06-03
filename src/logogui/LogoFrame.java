@@ -1,12 +1,19 @@
 package logogui;
 
+
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -14,6 +21,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.tree.TreeModel;
+
+import java.io.*;
 
 import logoparsing.LogoLexer;
 import logoparsing.LogoParser;
@@ -52,7 +61,94 @@ public class LogoFrame extends JFrame {
 	private JTextArea jLogArea = null;
 	private JTree jASTTree = null;
 	private boolean tabbedview = true;
+	
+	// Menus & listeners
+	private JMenuBar mb = null;
+	private JMenu jmFile = null, jmAbout = null;
+	private JMenuItem jmiRead = null, jmiSave = null, jmiExit = null, jmiAbout = null;
 
+	private ActionListener alRead = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser c = new JFileChooser();
+			BufferedReader in = null;
+			StringBuilder sb = new StringBuilder();
+			String s;
+			int rVal = c.showOpenDialog(LogoFrame.this);
+			
+			if(rVal == JFileChooser.APPROVE_OPTION) {
+				try {
+					in = new BufferedReader(new FileReader(c.getSelectedFile()));
+					while((s = in.readLine()) != null)
+						sb.append(s + '\n');
+					in.close();
+					getJProgramArea().setText(sb.toString());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			if(rVal == JFileChooser.CANCEL_OPTION) {	
+				// rien
+			}
+		}	
+	};
+	
+	private ActionListener alExit = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			getFrame().dispose();
+		}	
+	};
+	
+	private ActionListener alSave = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser c = new JFileChooser();
+			PrintWriter out = null;
+			File toWrite = null;
+			int rVal = c.showSaveDialog(LogoFrame.this);
+
+			if(rVal == JFileChooser.APPROVE_OPTION) {
+				try {
+					toWrite = c.getSelectedFile();
+					out = new PrintWriter(new BufferedWriter(new FileWriter(toWrite)));
+					out.print(getJProgramArea().getText());
+					//System.out.print(getJProgramArea().getText());
+					out.close();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			if(rVal == JFileChooser.CANCEL_OPTION) {
+				// rien
+			}
+		}	
+	};
+	
+	private void initMenus() {
+		// 
+		mb = new JMenuBar();
+		jmFile = new JMenu("Fichier"); jmAbout = new JMenu("A propo");
+		jmiRead = new JMenuItem("Lire un Script");
+		jmiSave = new JMenuItem("Sauvegarder le code");
+		jmiExit = new JMenuItem("Quitter");
+		jmiAbout = new JMenuItem("A propo de ce programme");
+		
+		//
+		jmFile.add(jmiRead);
+		jmFile.add(jmiSave);
+		jmFile.add(jmiExit);
+		jmAbout.add(jmiAbout);
+		mb.add(jmFile);
+		mb.add(jmAbout);
+		
+		//
+		jmiRead.addActionListener(alRead);
+		jmiExit.addActionListener(alExit);
+		jmiSave.addActionListener(alSave);
+		
+		//
+		this.setJMenuBar(mb);
+	}
+	
+	// Parsing tables & contextes
 	private LogoTableId table_id;
 
 	/**
@@ -81,6 +177,7 @@ public class LogoFrame extends JFrame {
 		Log.getInstance().setLogZone(getJLogArea());
 		initFrameSize();
 		this.setVisible(true);
+		initMenus();
 	}
 
 	/**
@@ -148,7 +245,11 @@ public class LogoFrame extends JFrame {
 		layout.setHorizontalGroup(hGroup);
 		layout.setVerticalGroup(vGroup);
 	}
-
+	
+	private JFrame getFrame() {
+		return this;
+	}
+	
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();

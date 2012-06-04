@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/LogoTree.g 2012-06-02 21:59:01
+// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/LogoTree.g 2012-06-04 20:46:18
 
   package logoparsing;
   import logogui.Traceur;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class LogoTree extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AF", "AO", "AV", "BC", "BOOL", "CF", "CO", "DEUX_POINTS", "DIVI", "DONNE", "EGALE", "EVAL", "FCAP", "FCC", "FPOS", "GUILLEMET", "ID", "IDENTIFICATEUR", "INF", "INF_EGALE", "INT", "LC", "LIST", "MOINS", "MULTI", "PARAMF", "PARAMO", "PLUS", "POINT_VIRGULE", "POW", "PROGRAMME", "REC", "REPETE", "SI", "SUP", "SUP_EGALE", "TD", "TG", "VE", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AF", "AO", "AV", "BC", "BOOL", "CF", "CO", "COMMENTAIRE", "DEUX_POINTS", "DIVI", "DONNE", "EGALE", "EVAL", "FCAP", "FCC", "FPOS", "GUILLEMET", "ID", "IDENTIFICATEUR", "INF", "INF_EGALE", "INT", "LC", "LIST", "MOINS", "MULTI", "PARAMF", "PARAMO", "PLUS", "POINT_VIRGULE", "POW", "PROGRAMME", "REC", "REPETE", "SI", "SUP", "SUP_EGALE", "SYMBOLE_COMMENTAIRE", "TD", "TG", "VE", "WS"
     };
 
     public static final int EOF=-1;
@@ -25,39 +25,41 @@ public class LogoTree extends TreeParser {
     public static final int BOOL=8;
     public static final int CF=9;
     public static final int CO=10;
-    public static final int DEUX_POINTS=11;
-    public static final int DIVI=12;
-    public static final int DONNE=13;
-    public static final int EGALE=14;
-    public static final int EVAL=15;
-    public static final int FCAP=16;
-    public static final int FCC=17;
-    public static final int FPOS=18;
-    public static final int GUILLEMET=19;
-    public static final int ID=20;
-    public static final int IDENTIFICATEUR=21;
-    public static final int INF=22;
-    public static final int INF_EGALE=23;
-    public static final int INT=24;
-    public static final int LC=25;
-    public static final int LIST=26;
-    public static final int MOINS=27;
-    public static final int MULTI=28;
-    public static final int PARAMF=29;
-    public static final int PARAMO=30;
-    public static final int PLUS=31;
-    public static final int POINT_VIRGULE=32;
-    public static final int POW=33;
-    public static final int PROGRAMME=34;
-    public static final int REC=35;
-    public static final int REPETE=36;
-    public static final int SI=37;
-    public static final int SUP=38;
-    public static final int SUP_EGALE=39;
-    public static final int TD=40;
-    public static final int TG=41;
-    public static final int VE=42;
-    public static final int WS=43;
+    public static final int COMMENTAIRE=11;
+    public static final int DEUX_POINTS=12;
+    public static final int DIVI=13;
+    public static final int DONNE=14;
+    public static final int EGALE=15;
+    public static final int EVAL=16;
+    public static final int FCAP=17;
+    public static final int FCC=18;
+    public static final int FPOS=19;
+    public static final int GUILLEMET=20;
+    public static final int ID=21;
+    public static final int IDENTIFICATEUR=22;
+    public static final int INF=23;
+    public static final int INF_EGALE=24;
+    public static final int INT=25;
+    public static final int LC=26;
+    public static final int LIST=27;
+    public static final int MOINS=28;
+    public static final int MULTI=29;
+    public static final int PARAMF=30;
+    public static final int PARAMO=31;
+    public static final int PLUS=32;
+    public static final int POINT_VIRGULE=33;
+    public static final int POW=34;
+    public static final int PROGRAMME=35;
+    public static final int REC=36;
+    public static final int REPETE=37;
+    public static final int SI=38;
+    public static final int SUP=39;
+    public static final int SUP_EGALE=40;
+    public static final int SYMBOLE_COMMENTAIRE=41;
+    public static final int TD=42;
+    public static final int TG=43;
+    public static final int VE=44;
+    public static final int WS=45;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -116,7 +118,7 @@ public class LogoTree extends TreeParser {
                     int alt1=2;
                     int LA1_0 = input.LA(1);
 
-                    if ( ((LA1_0 >= AV && LA1_0 <= BC)||(LA1_0 >= DIVI && LA1_0 <= FPOS)||(LA1_0 >= INF && LA1_0 <= LC)||(LA1_0 >= MOINS && LA1_0 <= MULTI)||LA1_0==PLUS||LA1_0==POW||(LA1_0 >= REC && LA1_0 <= VE)) ) {
+                    if ( ((LA1_0 >= AV && LA1_0 <= BC)||(LA1_0 >= DIVI && LA1_0 <= FPOS)||(LA1_0 >= INF && LA1_0 <= LC)||(LA1_0 >= MOINS && LA1_0 <= MULTI)||LA1_0==PLUS||LA1_0==POW||(LA1_0 >= REC && LA1_0 <= SUP_EGALE)||(LA1_0 >= TD && LA1_0 <= VE)) ) {
                         alt1=1;
                     }
 
@@ -947,7 +949,7 @@ public class LogoTree extends TreeParser {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( ((LA5_0 >= AV && LA5_0 <= BC)||(LA5_0 >= DIVI && LA5_0 <= FPOS)||(LA5_0 >= INF && LA5_0 <= LC)||(LA5_0 >= MOINS && LA5_0 <= MULTI)||LA5_0==PLUS||LA5_0==POW||(LA5_0 >= REC && LA5_0 <= VE)) ) {
+                if ( ((LA5_0 >= AV && LA5_0 <= BC)||(LA5_0 >= DIVI && LA5_0 <= FPOS)||(LA5_0 >= INF && LA5_0 <= LC)||(LA5_0 >= MOINS && LA5_0 <= MULTI)||LA5_0==PLUS||LA5_0==POW||(LA5_0 >= REC && LA5_0 <= SUP_EGALE)||(LA5_0 >= TD && LA5_0 <= VE)) ) {
                     alt5=1;
                 }
 
@@ -1246,21 +1248,21 @@ public class LogoTree extends TreeParser {
  
 
     public static final BitSet FOLLOW_PROGRAMME_in_prog41 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instruction_in_prog44 = new BitSet(new long[]{0x000007FA9BC7F0C8L});
+    public static final BitSet FOLLOW_instruction_in_prog44 = new BitSet(new long[]{0x00001DF5378FE0C8L});
     public static final BitSet FOLLOW_PLUS_in_exp72 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_exp78 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_exp78 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_exp84 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MOINS_in_exp93 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_exp99 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_exp99 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_exp105 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MULTI_in_exp114 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_exp120 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_exp120 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_exp126 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_DIVI_in_exp135 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_exp139 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_exp139 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_exp143 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_POW_in_exp152 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_exp156 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_exp156 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_exp160 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INT_in_exp168 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_eval_id_in_exp177 = new BitSet(new long[]{0x0000000000000002L});
@@ -1273,7 +1275,7 @@ public class LogoTree extends TreeParser {
     public static final BitSet FOLLOW_REC_in_instruction241 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_exp_in_instruction247 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_FPOS_in_instruction257 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_instruction263 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_instruction263 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_instruction269 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_VE_in_instruction278 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_LC_in_instruction286 = new BitSet(new long[]{0x0000000000000002L});
@@ -1288,32 +1290,32 @@ public class LogoTree extends TreeParser {
     public static final BitSet FOLLOW_exp_in_instruction354 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_bool_in_instruction364 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_INF_in_bool383 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_bool387 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_bool387 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_bool391 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_SUP_in_bool400 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_bool404 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_bool404 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_bool408 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_EGALE_in_bool417 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_bool421 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_bool421 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_bool425 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_SUP_EGALE_in_bool434 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_bool438 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_bool438 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_bool442 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INF_EGALE_in_bool451 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_bool455 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_exp_in_bool455 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_bool459 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_LIST_in_liste_instructions475 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instruction_in_liste_instructions478 = new BitSet(new long[]{0x000007FA9BC7F0C8L});
+    public static final BitSet FOLLOW_instruction_in_liste_instructions478 = new BitSet(new long[]{0x00001DF5378FE0C8L});
     public static final BitSet FOLLOW_REPETE_in_repete500 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exp_in_repete506 = new BitSet(new long[]{0x00000FFFFFFFFFF0L});
+    public static final BitSet FOLLOW_exp_in_repete506 = new BitSet(new long[]{0x00003FFFFFFFFFF0L});
     public static final BitSet FOLLOW_SI_in_si535 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bool_in_si539 = new BitSet(new long[]{0x00000FFFFFFFFFF0L});
+    public static final BitSet FOLLOW_bool_in_si539 = new BitSet(new long[]{0x00003FFFFFFFFFF0L});
     public static final BitSet FOLLOW_IDENTIFICATEUR_in_id570 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_ID_in_id572 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_EVAL_in_eval_id593 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_ID_in_eval_id595 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_DONNE_in_donne613 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_id_in_donne619 = new BitSet(new long[]{0x0000000299009000L});
+    public static final BitSet FOLLOW_id_in_donne619 = new BitSet(new long[]{0x0000000532012000L});
     public static final BitSet FOLLOW_exp_in_donne625 = new BitSet(new long[]{0x0000000000000008L});
 
 }

@@ -64,7 +64,14 @@ tokens {
 }
 INT : 	('0'..'9')+;
 ID	:	('A' .. 'Z')+;
+SYMBOLE_COMMENTAIRE
+	:	'//'
+	;
+COMMENTAIRE
+	:	SYMBOLE_COMMENTAIRE .* {skip();} '\n'
+	;
 WS  :   (' '|'\t'|('\r'? '\n'))+ { skip(); } ;
+
 
 programme 
 	: 
@@ -143,7 +150,7 @@ eval_id
 	{
 		if(!table_id.checkId($ID.text)){
 			setValide(false);
-			System.out.println(Double.toString(table_id.getId($ID.text)));
+			// System.out.println(Double.toString(table_id.getId($ID.text)));
 			Log.appendnl("Identificateur non défini: " + $ID.text);
 		}
 	}	

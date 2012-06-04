@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-05-24 23:50:41
+// $ANTLR 3.4 /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g 2012-06-04 20:46:13
 
   package logoparsing;
 
@@ -18,39 +18,41 @@ public class LogoLexer extends Lexer {
     public static final int BOOL=8;
     public static final int CF=9;
     public static final int CO=10;
-    public static final int DEUX_POINTS=11;
-    public static final int DIVI=12;
-    public static final int DONNE=13;
-    public static final int EGALE=14;
-    public static final int EVAL=15;
-    public static final int FCAP=16;
-    public static final int FCC=17;
-    public static final int FPOS=18;
-    public static final int GUILLEMET=19;
-    public static final int ID=20;
-    public static final int IDENTIFICATEUR=21;
-    public static final int INF=22;
-    public static final int INF_EGALE=23;
-    public static final int INT=24;
-    public static final int LC=25;
-    public static final int LIST=26;
-    public static final int MOINS=27;
-    public static final int MULTI=28;
-    public static final int PARAMF=29;
-    public static final int PARAMO=30;
-    public static final int PLUS=31;
-    public static final int POINT_VIRGULE=32;
-    public static final int POW=33;
-    public static final int PROGRAMME=34;
-    public static final int REC=35;
-    public static final int REPETE=36;
-    public static final int SI=37;
-    public static final int SUP=38;
-    public static final int SUP_EGALE=39;
-    public static final int TD=40;
-    public static final int TG=41;
-    public static final int VE=42;
-    public static final int WS=43;
+    public static final int COMMENTAIRE=11;
+    public static final int DEUX_POINTS=12;
+    public static final int DIVI=13;
+    public static final int DONNE=14;
+    public static final int EGALE=15;
+    public static final int EVAL=16;
+    public static final int FCAP=17;
+    public static final int FCC=18;
+    public static final int FPOS=19;
+    public static final int GUILLEMET=20;
+    public static final int ID=21;
+    public static final int IDENTIFICATEUR=22;
+    public static final int INF=23;
+    public static final int INF_EGALE=24;
+    public static final int INT=25;
+    public static final int LC=26;
+    public static final int LIST=27;
+    public static final int MOINS=28;
+    public static final int MULTI=29;
+    public static final int PARAMF=30;
+    public static final int PARAMO=31;
+    public static final int PLUS=32;
+    public static final int POINT_VIRGULE=33;
+    public static final int POW=34;
+    public static final int PROGRAMME=35;
+    public static final int REC=36;
+    public static final int REPETE=37;
+    public static final int SI=38;
+    public static final int SUP=39;
+    public static final int SUP_EGALE=40;
+    public static final int SYMBOLE_COMMENTAIRE=41;
+    public static final int TD=42;
+    public static final int TG=43;
+    public static final int VE=44;
+    public static final int WS=45;
 
     // delegates
     // delegators
@@ -887,70 +889,148 @@ public class LogoLexer extends Lexer {
     }
     // $ANTLR end "ID"
 
+    // $ANTLR start "SYMBOLE_COMMENTAIRE"
+    public final void mSYMBOLE_COMMENTAIRE() throws RecognitionException {
+        try {
+            int _type = SYMBOLE_COMMENTAIRE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:68:2: ( '//' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:68:4: '//'
+            {
+            match("//"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "SYMBOLE_COMMENTAIRE"
+
+    // $ANTLR start "COMMENTAIRE"
+    public final void mCOMMENTAIRE() throws RecognitionException {
+        try {
+            int _type = COMMENTAIRE;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:71:2: ( SYMBOLE_COMMENTAIRE ( . )* '\\n' )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:71:4: SYMBOLE_COMMENTAIRE ( . )* '\\n'
+            {
+            mSYMBOLE_COMMENTAIRE(); 
+
+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:71:24: ( . )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( (LA3_0=='\n') ) {
+                    alt3=2;
+                }
+                else if ( ((LA3_0 >= '\u0000' && LA3_0 <= '\t')||(LA3_0 >= '\u000B' && LA3_0 <= '\uFFFF')) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:71:24: .
+            	    {
+            	    matchAny(); 
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
+
+            skip();
+
+            match('\n'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "COMMENTAIRE"
+
     // $ANTLR start "WS"
     public final void mWS() throws RecognitionException {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
             {
-            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
-            int cnt4=0;
-            loop4:
+            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            int cnt5=0;
+            loop5:
             do {
-                int alt4=4;
+                int alt5=4;
                 switch ( input.LA(1) ) {
                 case ' ':
                     {
-                    alt4=1;
+                    alt5=1;
                     }
                     break;
                 case '\t':
                     {
-                    alt4=2;
+                    alt5=2;
                     }
                     break;
                 case '\n':
                 case '\r':
                     {
-                    alt4=3;
+                    alt5=3;
                     }
                     break;
 
                 }
 
-                switch (alt4) {
+                switch (alt5) {
             	case 1 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:10: ' '
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:10: ' '
             	    {
             	    match(' '); 
 
             	    }
             	    break;
             	case 2 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:14: '\\t'
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:14: '\\t'
             	    {
             	    match('\t'); 
 
             	    }
             	    break;
             	case 3 :
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:19: ( ( '\\r' )? '\\n' )
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:19: ( ( '\\r' )? '\\n' )
             	    {
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:19: ( ( '\\r' )? '\\n' )
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:20: ( '\\r' )? '\\n'
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:19: ( ( '\\r' )? '\\n' )
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:20: ( '\\r' )? '\\n'
             	    {
-            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:20: ( '\\r' )?
-            	    int alt3=2;
-            	    int LA3_0 = input.LA(1);
+            	    // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:20: ( '\\r' )?
+            	    int alt4=2;
+            	    int LA4_0 = input.LA(1);
 
-            	    if ( (LA3_0=='\r') ) {
-            	        alt3=1;
+            	    if ( (LA4_0=='\r') ) {
+            	        alt4=1;
             	    }
-            	    switch (alt3) {
+            	    switch (alt4) {
             	        case 1 :
-            	            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:67:20: '\\r'
+            	            // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:73:20: '\\r'
             	            {
             	            match('\r'); 
 
@@ -969,12 +1049,12 @@ public class LogoLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
+            	    if ( cnt5 >= 1 ) break loop5;
                         EarlyExitException eee =
-                            new EarlyExitException(4, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt4++;
+                cnt5++;
             } while (true);
 
 
@@ -992,10 +1072,10 @@ public class LogoLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:8: ( AF | AO | AV | BC | CF | CO | DEUX_POINTS | DIVI | DONNE | EGALE | FCAP | FCC | FPOS | GUILLEMET | INF | INF_EGALE | LC | MOINS | MULTI | PARAMF | PARAMO | PLUS | POINT_VIRGULE | POW | REC | REPETE | SI | SUP | SUP_EGALE | TD | TG | VE | INT | ID | WS )
-        int alt5=35;
-        alt5 = dfa5.predict(input);
-        switch (alt5) {
+        // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:8: ( AF | AO | AV | BC | CF | CO | DEUX_POINTS | DIVI | DONNE | EGALE | FCAP | FCC | FPOS | GUILLEMET | INF | INF_EGALE | LC | MOINS | MULTI | PARAMF | PARAMO | PLUS | POINT_VIRGULE | POW | REC | REPETE | SI | SUP | SUP_EGALE | TD | TG | VE | INT | ID | SYMBOLE_COMMENTAIRE | COMMENTAIRE | WS )
+        int alt6=37;
+        alt6 = dfa6.predict(input);
+        switch (alt6) {
             case 1 :
                 // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:10: AF
                 {
@@ -1269,7 +1349,23 @@ public class LogoLexer extends Lexer {
                 }
                 break;
             case 35 :
-                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:191: WS
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:191: SYMBOLE_COMMENTAIRE
+                {
+                mSYMBOLE_COMMENTAIRE(); 
+
+
+                }
+                break;
+            case 36 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:211: COMMENTAIRE
+                {
+                mCOMMENTAIRE(); 
+
+
+                }
+                break;
+            case 37 :
+                // /home/darkjh/eclipse_workspace/NF11/src/logoparsing/Logo.g:1:223: WS
                 {
                 mWS(); 
 
@@ -1282,36 +1378,38 @@ public class LogoLexer extends Lexer {
     }
 
 
-    protected DFA5 dfa5 = new DFA5(this);
-    static final String DFA5_eotS =
-        "\3\uffff\2\34\4\uffff\1\34\1\uffff\1\34\1\uffff\1\44\1\34\7\uffff"+
-        "\2\34\1\51\2\34\3\uffff\1\55\1\56\3\34\2\uffff\1\63\1\34\1\66\2"+
-        "\uffff\1\67\1\70\1\71\2\uffff\2\34\1\74\1\34\1\uffff\1\76\1\34\4"+
-        "\uffff\1\34\1\101\1\uffff\1\102\1\uffff\1\34\1\104\2\uffff\1\34"+
-        "\1\uffff\1\106\1\uffff";
-    static final String DFA5_eofS =
-        "\107\uffff";
-    static final String DFA5_minS =
-        "\1\11\2\uffff\1\126\1\103\4\uffff\1\117\1\uffff\1\103\1\uffff\1"+
-        "\75\1\103\7\uffff\1\105\1\111\1\75\1\104\1\105\3\uffff\2\101\1\116"+
-        "\1\101\1\117\2\uffff\1\101\1\103\1\101\2\uffff\3\101\2\uffff\1\116"+
-        "\1\120\1\101\1\123\1\uffff\1\101\1\105\4\uffff\1\105\1\101\1\uffff"+
-        "\1\101\1\uffff\1\124\1\101\2\uffff\1\105\1\uffff\1\101\1\uffff";
-    static final String DFA5_maxS =
-        "\1\175\2\uffff\1\126\1\103\4\uffff\1\117\1\uffff\1\120\1\uffff\1"+
-        "\75\1\103\7\uffff\1\105\1\111\1\75\1\107\1\105\3\uffff\2\132\1\116"+
-        "\1\103\1\117\2\uffff\1\132\1\120\1\132\2\uffff\3\132\2\uffff\1\116"+
-        "\1\120\1\132\1\123\1\uffff\1\132\1\105\4\uffff\1\105\1\132\1\uffff"+
-        "\1\132\1\uffff\1\124\1\132\2\uffff\1\105\1\uffff\1\132\1\uffff";
-    static final String DFA5_acceptS =
-        "\1\uffff\1\1\1\2\2\uffff\1\5\1\6\1\7\1\10\1\uffff\1\12\1\uffff\1"+
-        "\16\2\uffff\1\22\1\23\1\24\1\25\1\26\1\27\1\30\5\uffff\1\41\1\42"+
-        "\1\43\5\uffff\1\20\1\17\3\uffff\1\35\1\34\3\uffff\1\3\1\4\4\uffff"+
-        "\1\21\2\uffff\1\33\1\36\1\37\1\40\2\uffff\1\14\1\uffff\1\31\2\uffff"+
-        "\1\13\1\15\1\uffff\1\11\1\uffff\1\32";
-    static final String DFA5_specialS =
-        "\107\uffff}>";
-    static final String[] DFA5_transitionS = {
+    protected DFA6 dfa6 = new DFA6(this);
+    static final String DFA6_eotS =
+        "\3\uffff\2\34\3\uffff\1\41\1\34\1\uffff\1\34\1\uffff\1\46\1\34\7"+
+        "\uffff\2\34\1\53\2\34\3\uffff\1\57\1\60\1\61\1\uffff\3\34\2\uffff"+
+        "\1\67\1\34\1\72\2\uffff\1\73\1\74\1\75\4\uffff\2\34\1\100\1\34\1"+
+        "\uffff\1\102\1\34\4\uffff\1\34\1\105\1\uffff\1\106\1\uffff\1\34"+
+        "\1\110\2\uffff\1\34\1\uffff\1\112\1\uffff";
+    static final String DFA6_eofS =
+        "\113\uffff";
+    static final String DFA6_minS =
+        "\1\11\2\uffff\1\126\1\103\3\uffff\1\57\1\117\1\uffff\1\103\1\uffff"+
+        "\1\75\1\103\7\uffff\1\105\1\111\1\75\1\104\1\105\3\uffff\2\101\1"+
+        "\0\1\uffff\1\116\1\101\1\117\2\uffff\1\101\1\103\1\101\2\uffff\3"+
+        "\101\4\uffff\1\116\1\120\1\101\1\123\1\uffff\1\101\1\105\4\uffff"+
+        "\1\105\1\101\1\uffff\1\101\1\uffff\1\124\1\101\2\uffff\1\105\1\uffff"+
+        "\1\101\1\uffff";
+    static final String DFA6_maxS =
+        "\1\175\2\uffff\1\126\1\103\3\uffff\1\57\1\117\1\uffff\1\120\1\uffff"+
+        "\1\75\1\103\7\uffff\1\105\1\111\1\75\1\107\1\105\3\uffff\2\132\1"+
+        "\uffff\1\uffff\1\116\1\103\1\117\2\uffff\1\132\1\120\1\132\2\uffff"+
+        "\3\132\4\uffff\1\116\1\120\1\132\1\123\1\uffff\1\132\1\105\4\uffff"+
+        "\1\105\1\132\1\uffff\1\132\1\uffff\1\124\1\132\2\uffff\1\105\1\uffff"+
+        "\1\132\1\uffff";
+    static final String DFA6_acceptS =
+        "\1\uffff\1\1\1\2\2\uffff\1\5\1\6\1\7\2\uffff\1\12\1\uffff\1\16\2"+
+        "\uffff\1\22\1\23\1\24\1\25\1\26\1\27\1\30\5\uffff\1\41\1\42\1\45"+
+        "\3\uffff\1\10\3\uffff\1\20\1\17\3\uffff\1\35\1\34\3\uffff\1\3\1"+
+        "\4\1\43\1\44\4\uffff\1\21\2\uffff\1\33\1\36\1\37\1\40\2\uffff\1"+
+        "\14\1\uffff\1\31\2\uffff\1\13\1\15\1\uffff\1\11\1\uffff\1\32";
+    static final String DFA6_specialS =
+        "\40\uffff\1\0\52\uffff}>";
+    static final String[] DFA6_transitionS = {
             "\2\35\2\uffff\1\35\22\uffff\1\35\1\uffff\1\14\5\uffff\1\22\1"+
             "\21\1\20\1\23\1\uffff\1\17\1\uffff\1\10\12\33\1\7\1\24\1\15"+
             "\1\12\1\30\2\uffff\1\3\1\4\1\34\1\11\1\34\1\13\5\34\1\16\5\34"+
@@ -1324,37 +1422,39 @@ public class LogoLexer extends Lexer {
             "",
             "",
             "",
-            "",
             "\1\40",
+            "\1\42",
             "",
-            "\1\41\14\uffff\1\42",
+            "\1\43\14\uffff\1\44",
             "",
-            "\1\43",
             "\1\45",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\46",
             "\1\47",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\50",
-            "\1\52\2\uffff\1\53",
-            "\1\54",
+            "\1\51",
+            "\1\52",
+            "\1\54\2\uffff\1\55",
+            "\1\56",
             "",
             "",
             "",
             "\32\34",
             "\32\34",
-            "\1\57",
-            "\1\60\1\uffff\1\61",
-            "\1\62",
+            "\0\62",
+            "",
+            "\1\63",
+            "\1\64\1\uffff\1\65",
+            "\1\66",
             "",
             "",
             "\32\34",
-            "\1\64\14\uffff\1\65",
+            "\1\70\14\uffff\1\71",
             "\32\34",
             "",
             "",
@@ -1363,64 +1463,87 @@ public class LogoLexer extends Lexer {
             "\32\34",
             "",
             "",
-            "\1\72",
-            "\1\73",
-            "\32\34",
-            "\1\75",
             "",
-            "\32\34",
+            "",
+            "\1\76",
             "\1\77",
-            "",
-            "",
-            "",
-            "",
-            "\1\100",
             "\32\34",
+            "\1\101",
             "",
             "\32\34",
-            "",
             "\1\103",
+            "",
+            "",
+            "",
+            "",
+            "\1\104",
+            "\32\34",
+            "",
+            "\32\34",
+            "",
+            "\1\107",
             "\32\34",
             "",
             "",
-            "\1\105",
+            "\1\111",
             "",
             "\32\34",
             ""
     };
 
-    static final short[] DFA5_eot = DFA.unpackEncodedString(DFA5_eotS);
-    static final short[] DFA5_eof = DFA.unpackEncodedString(DFA5_eofS);
-    static final char[] DFA5_min = DFA.unpackEncodedStringToUnsignedChars(DFA5_minS);
-    static final char[] DFA5_max = DFA.unpackEncodedStringToUnsignedChars(DFA5_maxS);
-    static final short[] DFA5_accept = DFA.unpackEncodedString(DFA5_acceptS);
-    static final short[] DFA5_special = DFA.unpackEncodedString(DFA5_specialS);
-    static final short[][] DFA5_transition;
+    static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
+    static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
+    static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
+    static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
+    static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
+    static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
+    static final short[][] DFA6_transition;
 
     static {
-        int numStates = DFA5_transitionS.length;
-        DFA5_transition = new short[numStates][];
+        int numStates = DFA6_transitionS.length;
+        DFA6_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA5_transition[i] = DFA.unpackEncodedString(DFA5_transitionS[i]);
+            DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
         }
     }
 
-    class DFA5 extends DFA {
+    class DFA6 extends DFA {
 
-        public DFA5(BaseRecognizer recognizer) {
+        public DFA6(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 5;
-            this.eot = DFA5_eot;
-            this.eof = DFA5_eof;
-            this.min = DFA5_min;
-            this.max = DFA5_max;
-            this.accept = DFA5_accept;
-            this.special = DFA5_special;
-            this.transition = DFA5_transition;
+            this.decisionNumber = 6;
+            this.eot = DFA6_eot;
+            this.eof = DFA6_eof;
+            this.min = DFA6_min;
+            this.max = DFA6_max;
+            this.accept = DFA6_accept;
+            this.special = DFA6_special;
+            this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( AF | AO | AV | BC | CF | CO | DEUX_POINTS | DIVI | DONNE | EGALE | FCAP | FCC | FPOS | GUILLEMET | INF | INF_EGALE | LC | MOINS | MULTI | PARAMF | PARAMO | PLUS | POINT_VIRGULE | POW | REC | REPETE | SI | SUP | SUP_EGALE | TD | TG | VE | INT | ID | WS );";
+            return "1:1: Tokens : ( AF | AO | AV | BC | CF | CO | DEUX_POINTS | DIVI | DONNE | EGALE | FCAP | FCC | FPOS | GUILLEMET | INF | INF_EGALE | LC | MOINS | MULTI | PARAMF | PARAMO | PLUS | POINT_VIRGULE | POW | REC | REPETE | SI | SUP | SUP_EGALE | TD | TG | VE | INT | ID | SYMBOLE_COMMENTAIRE | COMMENTAIRE | WS );";
         }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            IntStream input = _input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA6_32 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA6_32 >= '\u0000' && LA6_32 <= '\uFFFF')) ) {s = 50;}
+
+                        else s = 49;
+
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 6, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+
     }
  
 

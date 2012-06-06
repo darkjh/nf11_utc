@@ -25,6 +25,7 @@ import javax.swing.tree.TreeModel;
 
 import java.io.*;
 
+import logoparsing.LogoContext;
 import logoparsing.LogoLexer;
 import logoparsing.LogoParser;
 import logoparsing.LogoTree;
@@ -207,6 +208,7 @@ public class LogoFrame extends JFrame {
 	
 	// Parsing tables & contextes
 	private LogoTableId table_id;
+	private LogoContext context;
 
 	/**
 	 * This is the default constructor
@@ -434,7 +436,8 @@ public class LogoFrame extends JFrame {
 	}
 	private void runParser() {
 		// table des identificateurs
-		table_id = new LogoTableId();
+		//table_id = new LogoTableId();
+		context = new LogoContext();
 
 		String program = getJProgramArea().getText().toUpperCase();
 		if (program.length() > 1 ) {
@@ -448,7 +451,8 @@ public class LogoFrame extends JFrame {
 				CommonTokenStream tokens = new CommonTokenStream(lexer);
 				LogoParser parser = new LogoParser(tokens);
 				// donne l'acces a la table des indentificateurs
-				parser.setTableId(table_id);
+				//parser.setTableId(table_id);
+				parser.setContext(context);
 				LogoParser.programme_return r = parser.programme();
 				// Resulting tree
 
@@ -463,7 +467,8 @@ public class LogoFrame extends JFrame {
 					CommonTreeNodeStream nodes = new CommonTreeNodeStream(parseTree);
 					LogoTree treewalker = new LogoTree(nodes);
 					// donne l'acces a la table des indentificateurs
-					treewalker.setTableId(table_id);
+					//treewalker.setTableId(table_id);
+					treewalker.setContext(context);
 					treewalker.initialize(getJLogoPane());
 					treewalker.prog();
 				} 

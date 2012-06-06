@@ -2,6 +2,9 @@ package logoparsing;
 
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class LogoTableId {
 	private Hashtable<String, Double> table_id;
@@ -29,6 +32,15 @@ public class LogoTableId {
 	public boolean checkId(String id) {
 		return table_id.containsKey(id);
 	}
+	
+	/*public void affichTableId(){
+		Iterator<?> iter = table_id.entrySet().iterator(); 
+		while (iter.hasNext()) { 
+		    Entry<String, Double> entry = (Map.Entry<String, Double>) iter.next(); 
+		    Object key = entry.getKey(); 
+		    Object val = entry.getValue(); 
+		} 
+	}*/
 	
 	public static void main(String[] args) {
 		LogoTableId t = new LogoTableId();

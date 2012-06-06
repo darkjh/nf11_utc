@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-06 20:20:24
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-06 22:08:05
 
   package logoparsing;
 
@@ -747,10 +747,10 @@ public class LogoLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:71:5: ( ( '0' .. '9' )+ )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:71:8: ( '0' .. '9' )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:67:5: ( ( '0' .. '9' )+ )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:67:8: ( '0' .. '9' )+
             {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:71:8: ( '0' .. '9' )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:67:8: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -764,7 +764,7 @@ public class LogoLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:71:9: '0' .. '9'
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:67:9: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -796,8 +796,8 @@ public class LogoLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:72:4: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:72:7: ( 'A' .. 'Z' | 'a' .. 'z' ) ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:68:4: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:68:7: ( 'A' .. 'Z' | 'a' .. 'z' ) ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -808,7 +808,7 @@ public class LogoLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:72:26: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:68:26: ( '0' .. '9' | 'A' .. 'Z' | 'a' .. 'z' | '-' )*
             loop2:
             do {
                 int alt2=2;
@@ -857,8 +857,8 @@ public class LogoLexer extends Lexer {
         try {
             int _type = SYMBOLE_COMMENTAIRE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:74:2: ( '//' )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:74:4: '//'
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:70:2: ( '//' )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:70:4: '//'
             {
             match("//"); 
 
@@ -878,11 +878,11 @@ public class LogoLexer extends Lexer {
         try {
             int _type = COMMENTAIRE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:77:2: ( SYMBOLE_COMMENTAIRE ( . )* '\\n' )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:77:4: SYMBOLE_COMMENTAIRE ( . )* '\\n'
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:73:2: ( SYMBOLE_COMMENTAIRE ( . )* '\\n' )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:73:4: SYMBOLE_COMMENTAIRE ( . )* '\\n'
             {
             mSYMBOLE_COMMENTAIRE(); 
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:77:24: ( . )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:73:24: ( . )*
             loop3:
             do {
                 int alt3=2;
@@ -898,7 +898,7 @@ public class LogoLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:77:24: .
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:73:24: .
             	    {
             	    matchAny(); 
 
@@ -928,10 +928,10 @@ public class LogoLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:5: ( ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+ )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
             {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:9: ( ' ' | '\\t' | ( ( '\\r' )? '\\n' ) )+
             int cnt5=0;
             loop5:
             do {
@@ -958,26 +958,26 @@ public class LogoLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:10: ' '
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:10: ' '
             	    {
             	    match(' '); 
 
             	    }
             	    break;
             	case 2 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:14: '\\t'
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:14: '\\t'
             	    {
             	    match('\t'); 
 
             	    }
             	    break;
             	case 3 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:19: ( ( '\\r' )? '\\n' )
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:19: ( ( '\\r' )? '\\n' )
             	    {
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:19: ( ( '\\r' )? '\\n' )
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:20: ( '\\r' )? '\\n'
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:19: ( ( '\\r' )? '\\n' )
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:20: ( '\\r' )? '\\n'
             	    {
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:20: ( '\\r' )?
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:20: ( '\\r' )?
             	    int alt4=2;
             	    int LA4_0 = input.LA(1);
 
@@ -986,7 +986,7 @@ public class LogoLexer extends Lexer {
             	    }
             	    switch (alt4) {
             	        case 1 :
-            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:79:20: '\\r'
+            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:75:20: '\\r'
             	            {
             	            match('\r'); 
 

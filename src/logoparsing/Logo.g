@@ -51,7 +51,6 @@ tokens {
   import logogui.Log;
 }
 @members{
-  LogoTableId table_id;
   LogoContext context;
   	
   boolean valide = true;
@@ -60,9 +59,6 @@ tokens {
   }
   public void setValide(boolean b){
   	valide = b;
-  }
-  public void setTableId(LogoTableId t) {
-  	this.table_id = t;
   }
   public void setContext(LogoContext ctxt) {
     this.context = ctxt;
@@ -81,7 +77,7 @@ WS  :   (' '|'\t'|('\r'? '\n'))+ { skip(); } ;
 
 programme 
 	: 
-	liste_instructions -> ^(PROGRAMME liste_instructions)
+	{this.context.push(new LogoTableId());} liste_instructions -> ^(PROGRAMME liste_instructions)
 	;
 	
 liste_instructions
@@ -112,8 +108,9 @@ atom
 
 liste_evaluation
 	:
-	//{this.context.push(new LogoTableId());} 
-	liste_instructions  -> ^(LIST liste_instructions FINDELISTEVAL)
+	{this.context.push(new LogoTableId());} 
+	liste_instructions  
+	{this.context.pop();} -> ^(LIST liste_instructions FINDELISTEVAL) 
 	;
 
 repete
@@ -144,7 +141,7 @@ affect_id
 	:
 	DONNE i=id expr
 	{
-		table_id.setId($i.rid, (double)0);	// occupy a place in the id table
+		context.setIdentifier($i.rid, (double)0);	// occupy a place in the id table
 	}
 	  -> ^(DONNE id expr)
 	;
@@ -158,7 +155,8 @@ use_id
 	:	
 	DEUX_POINTS ID 
 	{
-		if(!table_id.checkId($ID.text)){
+	
+		if(!context.containsID($ID.text)){
 			setValide(false);
 			// System.out.println(Double.toString(table_id.getId($ID.text)));
 			Log.appendnl("Identificateur non defini: " + $ID.text);

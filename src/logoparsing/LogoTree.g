@@ -10,7 +10,7 @@ options {
 }
 @members{
   Traceur traceur;
-  LogoTableId table_id;
+  LogoContext context;
   
   public void initialize(javax.swing.JPanel logo) {
   	traceur = Traceur.getInstance();
@@ -23,12 +23,13 @@ options {
   public void pop() {
      ((CommonTreeNodeStream)input).pop();
   }
-  public void setTableId(LogoTableId t) {
-  	this.table_id = t;
+  public void setContext(LogoContext ctxt) {
+    this.context = ctxt;
   }
   
 }
-prog : ^(PROGRAMME (instruction)*) 
+prog : {this.context.push(new LogoTableId());} 
+        ^(PROGRAMME (instruction)*) 
      {Log.appendnl("Programme principal");}
 ;
 
@@ -74,7 +75,7 @@ boolExpr returns [boolean retVal]
 
 liste_instructions
 	:
-	^(LIST (instruction)+ FINDELISTEVAL)	
+	{this.context.push(new LogoTableId());} ^(LIST (instruction)+ FINDELISTEVAL) {this.context.pop();}
 	;
 
 repete
@@ -141,14 +142,14 @@ id returns [String rid]
 	
 use_id returns [Double d]
 	:
-	^(DEUX_POINTS ID) { d = table_id.getId($ID.text);}
+	^(DEUX_POINTS ID) { d = context.getIDValue($ID.text);}
 	;
 	
 donne
 	:	
 	^(DONNE i = id n = exp) 
 		{ 
-			table_id.setId($i.rid, (Double)$n.v);
+			context.setIdentifier($i.rid, (Double)$n.v);
 			//Log.appendnl("Nouvelle variable: " + $id.rid + "	Value: " + Double.toString($n.v));
 		}
 	;

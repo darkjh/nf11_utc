@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-06 19:21:29
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-06 20:20:23
 
   package logoparsing;
   import logogui.Log;
@@ -1282,7 +1282,7 @@ public class LogoParser extends Parser {
 
 
             // AST REWRITE
-            // elements: id, expr, DONNE
+            // elements: DONNE, id, expr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1364,7 +1364,7 @@ public class LogoParser extends Parser {
 
 
             // AST REWRITE
-            // elements: ID, GUILLEMET
+            // elements: GUILLEMET, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 

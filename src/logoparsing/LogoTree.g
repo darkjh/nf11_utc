@@ -74,7 +74,7 @@ boolExpr returns [boolean retVal]
 
 liste_instructions
 	:
-	^(LIST (instruction)+)	
+	^(LIST (instruction)+ FINDELISTEVAL)	
 	;
 
 repete

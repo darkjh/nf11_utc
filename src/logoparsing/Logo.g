@@ -5,9 +5,9 @@ options {
 tokens {
   PROGRAMME;
   LIST;
-  IDENTIFICATEUR;
-  EVAL;
-  BOOL;
+  //DEFINE;
+  //USE;
+ // BOOL;
   AV = 'AV' ;
   TD = 'TD';
   TG = 'TG';
@@ -25,8 +25,8 @@ tokens {
   MULTI = '*';
   DIVI = '/';
   POW = '^';
-  PARAMO = '(';
-  PARAMF = ')';
+  PO = '(';
+  PF = ')';
   REPETE = 'REPETE';
   AO = '{';
   AF = '}';
@@ -38,8 +38,9 @@ tokens {
   SUP_EGALE = '>=';
   INF_EGALE = '<=';
   DEUX_POINTS = ':';
-  DONNE = 'DONNE';
   GUILLEMET = '"';
+  DONNE = 'DONNE';
+  TANTQUE = 'TANTQUE';
 }
 @lexer::header {
   package logoparsing;
@@ -50,6 +51,7 @@ tokens {
 }
 @members{
   LogoTableId table_id;
+  //LogoContext context;
   	
   boolean valide = true;
   public boolean getValide(){
@@ -101,7 +103,7 @@ powExpr
 	
 atom
 	:
-	INT | PARAMO! expr PARAMF! | eval_id
+	INT | PO! expr PF! | use_id
 	;
 
 liste_evaluation
@@ -114,7 +116,7 @@ repete
 	REPETE^ expr CO! liste_evaluation CF! //-> ^(REPETE expr ^(LIST liste_instructions))
 	;
 
-bool
+boolExpr
 	:
 	expr (
 	SUP^
@@ -126,35 +128,38 @@ bool
 	;
 
 si	:
-	SI^ bool CO! liste_evaluation CF! CO! liste_evaluation CF!	
+	SI^ boolExpr CO! liste_evaluation CF! (CO! liste_evaluation CF!)?	
 	;
 
+tantque :
+  TANTQUE^ boolExpr CO! liste_evaluation CF! 
+  ;
 
-donne_id
+affect_id
 	:
 	DONNE i=id expr
 	{
 		table_id.setId($i.rid, (double)0);	// occupy a place in the id table
 	}
-						-> ^(DONNE ^(IDENTIFICATEUR id) expr)
+	  -> ^(DONNE id expr)
 	;
 	
 id returns [String rid] 
 	:	
-	GUILLEMET! ID {$rid = $ID.text;}
+	GUILLEMET ID {$rid = $ID.text;} -> ^(GUILLEMET ID)
 	;
 
-eval_id
+use_id
 	:	
 	DEUX_POINTS ID 
 	{
 		if(!table_id.checkId($ID.text)){
 			setValide(false);
 			// System.out.println(Double.toString(table_id.getId($ID.text)));
-			Log.appendnl("Identificateur non défini: " + $ID.text);
+			Log.appendnl("Identificateur non defini: " + $ID.text);
 		}
 	}	
-						-> ^(EVAL ID)
+						-> ^(DEUX_POINTS ID)
 	;
 
 instruction 
@@ -170,8 +175,10 @@ instruction
 	  | LC
 	  | BC
 	  | repete
-	  | donne_id
-	  | bool
+	  | affect_id
+	  //| boolExpr
 	  | si
+	  | tantque
+	  
 	;
    

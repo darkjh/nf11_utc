@@ -10,6 +10,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -62,10 +63,12 @@ public class LogoFrame extends JFrame {
 	private JTree jASTTree = null;
 	private boolean tabbedview = true;
 	
+	// current file
+	private File currentFile = null;
 	// Menus & listeners
 	private JMenuBar mb = null;
 	private JMenu jmFile = null, jmAbout = null;
-	private JMenuItem jmiRead = null, jmiSave = null, jmiExit = null, jmiAbout = null;
+	private JMenuItem jmiRead = null, jmiSaveAs = null, jmiSave = null, jmiExit = null, jmiAbout = null;
 
 	private ActionListener alRead = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -73,11 +76,26 @@ public class LogoFrame extends JFrame {
 			BufferedReader in = null;
 			StringBuilder sb = new StringBuilder();
 			String s;
-			int rVal = c.showOpenDialog(LogoFrame.this);
 			
+			c.setCurrentDirectory(new File("."));
+			c.setDialogTitle("Import logo file...");
+			
+			c.setFileFilter(new FileFilter() {
+				public boolean accept(File f) {
+					// TODO Auto-generated method stub
+					return f.getName().toLowerCase().endsWith(".lgo")
+							|| f.isDirectory();
+				}
+				public String getDescription() {
+					// TODO Auto-generated method stub
+					return "*.lgo";
+				}});
+			
+			int rVal = c.showOpenDialog(LogoFrame.this);
 			if(rVal == JFileChooser.APPROVE_OPTION) {
 				try {
-					in = new BufferedReader(new FileReader(c.getSelectedFile()));
+					currentFile = c.getSelectedFile();
+					in = new BufferedReader(new FileReader(currentFile));
 					while((s = in.readLine()) != null)
 						sb.append(s + '\n');
 					in.close();
@@ -98,21 +116,36 @@ public class LogoFrame extends JFrame {
 		}	
 	};
 	
-	private ActionListener alSave = new ActionListener() {
+	private ActionListener alSaveAs = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser c = new JFileChooser();
 			PrintWriter out = null;
-			File toWrite = null;
+			
+			c.setCurrentDirectory(new File("."));
+			c.setDialogTitle("Import logo file...");
+			
+			c.setFileFilter(new FileFilter() {
+				public boolean accept(File f) {
+					// TODO Auto-generated method stub
+					return f.getName().toLowerCase().endsWith(".lgo")
+							|| f.isDirectory();
+				}
+				public String getDescription() {
+					// TODO Auto-generated method stub
+					return "*.lgo";
+				}});
+			
 			int rVal = c.showSaveDialog(LogoFrame.this);
-
 			if(rVal == JFileChooser.APPROVE_OPTION) {
+				Log.appendnl("sauvegarde terminee");
+				FileWriter fileWriter;
 				try {
-					toWrite = c.getSelectedFile();
-					out = new PrintWriter(new BufferedWriter(new FileWriter(toWrite)));
+					fileWriter = new FileWriter(c.getSelectedFile().getPath() + ".lgo");
+					out = new PrintWriter(fileWriter, true); // true
 					out.print(getJProgramArea().getText());
-					//System.out.print(getJProgramArea().getText());
 					out.close();
-				} catch (Exception e1) {
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -122,18 +155,41 @@ public class LogoFrame extends JFrame {
 		}	
 	};
 	
+	
+	private ActionListener alSave = new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (currentFile != null ) {
+				try {
+					FileWriter fileWriter = new FileWriter(currentFile);
+					PrintWriter out = new PrintWriter(fileWriter, true); // true
+					// :
+					// autoFlush
+					out.print(getJProgramArea().getText());
+					out.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
+	};
+	
 	private void initMenus() {
 		// 
 		mb = new JMenuBar();
 		jmFile = new JMenu("Fichier"); jmAbout = new JMenu("A propo");
 		jmiRead = new JMenuItem("Lire un Script");
-		jmiSave = new JMenuItem("Sauvegarder le code");
+		jmiSave = new JMenuItem("Sauvegarder");
+		jmiSaveAs = new JMenuItem("Sauvegarder sous");
 		jmiExit = new JMenuItem("Quitter");
 		jmiAbout = new JMenuItem("A propo de ce programme");
 		
 		//
 		jmFile.add(jmiRead);
-		jmFile.add(jmiSave);
+		//jmFile.add(jmiSave);
+		jmFile.add(jmiSaveAs);
 		jmFile.add(jmiExit);
 		jmAbout.add(jmiAbout);
 		mb.add(jmFile);
@@ -143,6 +199,7 @@ public class LogoFrame extends JFrame {
 		jmiRead.addActionListener(alRead);
 		jmiExit.addActionListener(alExit);
 		jmiSave.addActionListener(alSave);
+		jmiSaveAs.addActionListener(alSaveAs);
 		
 		//
 		this.setJMenuBar(mb);
@@ -295,7 +352,7 @@ public class LogoFrame extends JFrame {
 		if (jRunButton == null) {
 			jRunButton = new JButton();
 			jRunButton.setName("run");
-			jRunButton.setText("Exécute ...");
+			jRunButton.setText("Execute ...");
 			jRunButton.setPreferredSize(buttonDimension);
 			jRunButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -478,7 +535,7 @@ public class LogoFrame extends JFrame {
 	public JPanel getJControlPane() {
 		if (jControlPane == null) {
 			jControlPane = new JPanel();
-			jControlPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contrôle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, null));
+			jControlPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Console", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, null));
 			initControlComponents();
 		}
 		return jControlPane;

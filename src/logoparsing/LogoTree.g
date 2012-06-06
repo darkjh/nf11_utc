@@ -40,7 +40,7 @@ exp returns [double v]
 	| ^(DIVI x=exp y=exp) {$v = $x.v / $y.v;}
 	| ^(POW x=exp y=exp) {$v = Math.pow($x.v, $y.v);}
 	| INT {$v = Double.parseDouble($INT.text);}
-	| a=eval_id {$v = $a.d;}
+	| a=use_id {$v = $a.d;}
 	;
 
 instruction
@@ -58,17 +58,18 @@ instruction
 	 | repete
 	 | donne
 	 | si
+	 | tantque
 	 | a=exp {Log.appendnl("Eval Expr: " + Double.toString($a.v));}
-	 | c=bool {Log.appendnl(Boolean.toString($c.bo));}
+	 | c=boolExpr {Log.appendnl(Boolean.toString($c.retVal));}
 	;
 
-bool returns [boolean bo]
+boolExpr returns [boolean retVal]
 	:
-	^(INF a=exp b=exp) {$bo = a < b;}
-	| ^(SUP a=exp b=exp) {$bo = a > b;}
-	| ^(EGALE a=exp b=exp) {$bo = a == b;}
-	| ^(SUP_EGALE a=exp b=exp) {$bo = a >= b;}
-	| ^(INF_EGALE a=exp b=exp) {$bo = a <= b;}
+	^(INF a=exp b=exp) {$retVal = a < b;}
+	| ^(SUP a=exp b=exp) {$retVal = a > b;}
+	| ^(EGALE a=exp b=exp) {$retVal = a == b;}
+	| ^(SUP_EGALE a=exp b=exp) {$retVal = a >= b;}
+	| ^(INF_EGALE a=exp b=exp) {$retVal = a <= b;}
 	;
 
 liste_instructions
@@ -91,34 +92,56 @@ repete
 	}	
 	;
 
-si	
-@init {
-	int mark_list1 = 0;
-	int mark_list2 = 0;
+si
+@init{
+int mark_list_true = -1; 
+int mark_list_false = -1;
+}:
+^(SI be = boolExpr {mark_list_true = input.mark();} . ({mark_list_false = input.mark();} .)?){   
+  if($be.retVal){
+    push(mark_list_true);
+    liste_instructions();
+    pop();
+    }
+  else if(mark_list_false != -1){
+    push(mark_list_false);
+    liste_instructions();
+    pop();
+    }
+  }
+;
+
+tantque
+@init{
+int mark_bool = -1;
+int mark_list = -1;
+}:
+^(TANTQUE {mark_bool = input.mark();} . {mark_list = input.mark();} . )
+{
+  while (true) {
+    push(mark_bool+1);
+    if(boolExpr()){
+      push(mark_list);
+      liste_instructions();
+      pop();
+      pop();
+    }
+    else{
+      pop();
+      break;
+    }
+  }
 }
-	:	
-	^(SI b=bool {mark_list1 = input.mark();} . {mark_list2 = input.mark();} .)
-	{
-		if($b.bo) {
-			push(mark_list1);
-			liste_instructions();
-			pop();
-		} else {
-			push(mark_list2);
-			liste_instructions();
-			pop();
-		}
-	}	
-	;
-	
+;
+
 id returns [String rid]
 	:
-	^(IDENTIFICATEUR ID) {$rid = $ID.text;}
+	^(GUILLEMET ID) {$rid = $ID.text;}
 	;
 	
-eval_id returns [Double d]
+use_id returns [Double d]
 	:
-	^(EVAL ID) { d = table_id.getId($ID.text);}
+	^(DEUX_POINTS ID) { d = table_id.getId($ID.text);}
 	;
 	
 donne
@@ -126,7 +149,7 @@ donne
 	^(DONNE i = id n = exp) 
 		{ 
 			table_id.setId($i.rid, (Double)$n.v);
-			Log.appendnl("Nouvelle variable: " + $id.rid + "	Value: " + Double.toString($n.v));
+			//Log.appendnl("Nouvelle variable: " + $id.rid + "	Value: " + Double.toString($n.v));
 		}
 	;
 

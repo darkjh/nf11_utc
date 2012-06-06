@@ -1,12 +1,13 @@
 package logoparsing;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 
 public class LogoTableId {
-	private HashMap<String, Double> table_id;
+	private Hashtable<String, Double> table_id;
 	
 	public LogoTableId() {
-		table_id = new HashMap<String, Double>();
+		table_id = new Hashtable<String, Double>();
 	}
 	
 	public Double getId(String id) {

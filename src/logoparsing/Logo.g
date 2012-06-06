@@ -5,6 +5,7 @@ options {
 tokens {
   PROGRAMME;
   LIST;
+  FINDELISTEVAL;
   //DEFINE;
   //USE;
  // BOOL;
@@ -51,7 +52,7 @@ tokens {
 }
 @members{
   LogoTableId table_id;
-  //LogoContext context;
+  LogoContext context;
   	
   boolean valide = true;
   public boolean getValide(){
@@ -63,9 +64,12 @@ tokens {
   public void setTableId(LogoTableId t) {
   	this.table_id = t;
   }
+  public void setContext(LogoContext ctxt) {
+    this.context = ctxt;
+  }
 }
 INT : 	('0'..'9')+;
-ID	:	('A' .. 'Z')+;
+ID :  ('A'..'Z'|'a'..'z')( '0'..'9'|'A'..'Z'|'a'..'z'|'-')*;
 SYMBOLE_COMMENTAIRE
 	:	'//'
 	;
@@ -108,7 +112,8 @@ atom
 
 liste_evaluation
 	:
-	liste_instructions -> ^(LIST liste_instructions)
+	//{this.context.push(new LogoTableId());} 
+	liste_instructions  -> ^(LIST liste_instructions FINDELISTEVAL)
 	;
 
 repete

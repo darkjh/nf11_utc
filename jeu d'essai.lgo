@@ -1,0 +1,7 @@
+DONNE "A 70
+DONNE "C 30
+TANTQUE :C >0 [
+REPETE 8 [AV :A TD 45]
+TD 12
+DONNE "C (:C - 1)
+]

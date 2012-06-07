@@ -1,0 +1,7 @@
+DONNE "valeur 1 // Initialisation
+VE
+REPETE 150 [
+AV :valeur
+TD 45
+DONNE "valeur :valeur + 1
+]

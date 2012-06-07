@@ -77,19 +77,26 @@ liste_instructions
 	:
 	{this.context.push(new LogoTableId());} ^(LIST (instruction)+ FINDELISTEVAL) {this.context.pop();}
 	;
+	
+liste_instructions_boucle
+  :
+  ^(LIST (instruction)+ FINDELISTEVAL)
+  ;
 
 repete
 @init {
 	int mark_list = 0;
 }
 	:
+	{this.context.push(new LogoTableId());} 
 	^(REPETE n = exp {Log.appendnl(Double.toString($n.v)); mark_list = input.mark();} .)
 	{
 		for(int i = 0; i < $n.v; i++) {
 			push(mark_list);
-			liste_instructions();
+			liste_instructions_boucle();
 			pop();
 		}
+		this.context.pop();
 	}	
 	;
 
@@ -109,6 +116,7 @@ int mark_list_false = -1;
     liste_instructions();
     pop();
     }
+     
   }
 ;
 
@@ -117,22 +125,24 @@ tantque
 int mark_bool = -1;
 int mark_list = -1;
 }:
+{this.context.push(new LogoTableId());} 
 ^(TANTQUE {mark_bool = input.mark();} a = boolExpr {mark_list = input.mark();} . )
 {
   while (true) {
     push(mark_bool+1);
     if(boolExpr()){
       push(mark_list);
-      liste_instructions();
+      //liste_instructions();
+      liste_instructions_boucle();
       pop();
       pop();
     }
     else{
-    System.out.println("pop");
       pop();
       break;
     }
   }
+  this.context.pop();
 }
 ;
 

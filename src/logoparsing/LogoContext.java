@@ -45,6 +45,4 @@ public class LogoContext {
 	
 	public LogoContext (){
 	}
-	
-	
 }

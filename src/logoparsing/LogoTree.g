@@ -66,11 +66,11 @@ instruction
 
 boolExpr returns [boolean retVal]
 	:
-	^(INF a=exp b=exp) {$retVal = a < b;}
-	| ^(SUP a=exp b=exp) {$retVal = a > b;}
-	| ^(EGALE a=exp b=exp) {$retVal = a == b;}
-	| ^(SUP_EGALE a=exp b=exp) {$retVal = a >= b;}
-	| ^(INF_EGALE a=exp b=exp) {$retVal = a <= b;}
+	^(INF a=exp b=exp) {$retVal = ($a.v < $b.v);}
+	| ^(SUP a=exp b=exp) {$retVal = ($a.v > $b.v);}
+	| ^(EGALE a=exp b=exp) {$retVal = ($a.v == $b.v);}
+	| ^(SUP_EGALE a=exp b=exp) {$retVal = ($a.v >= $b.v);}
+	| ^(INF_EGALE a=exp b=exp) {$retVal = ($a.v <= $b.v);}
 	;
 
 liste_instructions
@@ -117,7 +117,7 @@ tantque
 int mark_bool = -1;
 int mark_list = -1;
 }:
-^(TANTQUE {mark_bool = input.mark();} . {mark_list = input.mark();} . )
+^(TANTQUE {mark_bool = input.mark();} a = boolExpr {mark_list = input.mark();} . )
 {
   while (true) {
     push(mark_bool+1);
@@ -128,6 +128,7 @@ int mark_list = -1;
       pop();
     }
     else{
+    System.out.println("pop");
       pop();
       break;
     }

@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g 2012-06-06 22:08:06
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g 2012-06-07 10:38:15
 
   package logoparsing;
   import logogui.Traceur;
@@ -766,7 +766,7 @@ public class LogoTree extends TreeParser {
 
 
                     match(input, Token.UP, null); 
-                    retVal = a < b;
+                    retVal = (a < b);
 
                     }
                     break;
@@ -788,7 +788,7 @@ public class LogoTree extends TreeParser {
 
 
                     match(input, Token.UP, null); 
-                    retVal = a > b;
+                    retVal = (a > b);
 
                     }
                     break;
@@ -810,7 +810,7 @@ public class LogoTree extends TreeParser {
 
 
                     match(input, Token.UP, null); 
-                    retVal = a == b;
+                    retVal = (a == b);
 
                     }
                     break;
@@ -832,7 +832,7 @@ public class LogoTree extends TreeParser {
 
 
                     match(input, Token.UP, null); 
-                    retVal = a >= b;
+                    retVal = (a >= b);
 
                     }
                     break;
@@ -854,7 +854,7 @@ public class LogoTree extends TreeParser {
 
 
                     match(input, Token.UP, null); 
-                    retVal = a <= b;
+                    retVal = (a <= b);
 
                     }
                     break;
@@ -1056,22 +1056,29 @@ public class LogoTree extends TreeParser {
 
 
     // $ANTLR start "tantque"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:115:1: tantque : ^( TANTQUE . . ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:115:1: tantque : ^( TANTQUE a= boolExpr . ) ;
     public final void tantque() throws RecognitionException {
+        boolean a = false;
+
+
 
         int mark_bool = -1;
         int mark_list = -1;
 
         try {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:119:2: ( ^( TANTQUE . . ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:120:1: ^( TANTQUE . . )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:119:2: ( ^( TANTQUE a= boolExpr . ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:120:1: ^( TANTQUE a= boolExpr . )
             {
             match(input,TANTQUE,FOLLOW_TANTQUE_in_tantque583); 
 
             mark_bool = input.mark();
 
             match(input, Token.DOWN, null); 
-            matchAny(input); 
+            pushFollow(FOLLOW_boolExpr_in_tantque591);
+            a=boolExpr();
+
+            state._fsp--;
+
             mark_list = input.mark();
             matchAny(input); 
 
@@ -1086,6 +1093,7 @@ public class LogoTree extends TreeParser {
                   pop();
                 }
                 else{
+                System.out.println("pop");
                   pop();
                   break;
                 }
@@ -1107,20 +1115,20 @@ public class LogoTree extends TreeParser {
 
 
     // $ANTLR start "id"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:138:1: id returns [String rid] : ^( GUILLEMET ID ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:139:1: id returns [String rid] : ^( GUILLEMET ID ) ;
     public final String id() throws RecognitionException {
         String rid = null;
 
         CommonTree ID2=null;
 
         try {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:139:2: ( ^( GUILLEMET ID ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:140:2: ^( GUILLEMET ID )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:140:2: ( ^( GUILLEMET ID ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:141:2: ^( GUILLEMET ID )
             {
-            match(input,GUILLEMET,FOLLOW_GUILLEMET_in_id611); 
+            match(input,GUILLEMET,FOLLOW_GUILLEMET_in_id615); 
 
             match(input, Token.DOWN, null); 
-            ID2=(CommonTree)match(input,ID,FOLLOW_ID_in_id613); 
+            ID2=(CommonTree)match(input,ID,FOLLOW_ID_in_id617); 
 
             match(input, Token.UP, null); 
             rid = (ID2!=null?ID2.getText():null);
@@ -1140,20 +1148,20 @@ public class LogoTree extends TreeParser {
 
 
     // $ANTLR start "use_id"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:143:1: use_id returns [Double d] : ^( DEUX_POINTS ID ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:144:1: use_id returns [Double d] : ^( DEUX_POINTS ID ) ;
     public final Double use_id() throws RecognitionException {
         Double d = null;
 
         CommonTree ID3=null;
 
         try {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:144:2: ( ^( DEUX_POINTS ID ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:145:2: ^( DEUX_POINTS ID )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:145:2: ( ^( DEUX_POINTS ID ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:146:2: ^( DEUX_POINTS ID )
             {
-            match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_use_id634); 
+            match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_use_id638); 
 
             match(input, Token.DOWN, null); 
-            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_use_id636); 
+            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_use_id640); 
 
             match(input, Token.UP, null); 
              d = context.getIDValue((ID3!=null?ID3.getText():null));
@@ -1173,7 +1181,7 @@ public class LogoTree extends TreeParser {
 
 
     // $ANTLR start "donne"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:148:1: donne : ^( DONNE i= id n= exp ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:149:1: donne : ^( DONNE i= id n= exp ) ;
     public final void donne() throws RecognitionException {
         String i = null;
 
@@ -1181,18 +1189,18 @@ public class LogoTree extends TreeParser {
 
 
         try {
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:149:2: ( ^( DONNE i= id n= exp ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:150:2: ^( DONNE i= id n= exp )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:150:2: ( ^( DONNE i= id n= exp ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\LogoTree.g:151:2: ^( DONNE i= id n= exp )
             {
-            match(input,DONNE,FOLLOW_DONNE_in_donne654); 
+            match(input,DONNE,FOLLOW_DONNE_in_donne658); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_id_in_donne660);
+            pushFollow(FOLLOW_id_in_donne664);
             i=id();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_exp_in_donne666);
+            pushFollow(FOLLOW_exp_in_donne670);
             n=exp();
 
             state._fsp--;
@@ -1288,12 +1296,13 @@ public class LogoTree extends TreeParser {
     public static final BitSet FOLLOW_SI_in_si551 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_boolExpr_in_si557 = new BitSet(new long[]{0x00001FFFFFFFFFF0L});
     public static final BitSet FOLLOW_TANTQUE_in_tantque583 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_GUILLEMET_in_id611 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_id613 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DEUX_POINTS_in_use_id634 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_use_id636 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DONNE_in_donne654 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_id_in_donne660 = new BitSet(new long[]{0x0000011000F80000L});
-    public static final BitSet FOLLOW_exp_in_donne666 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_boolExpr_in_tantque591 = new BitSet(new long[]{0x00001FFFFFFFFFF0L});
+    public static final BitSet FOLLOW_GUILLEMET_in_id615 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_id617 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DEUX_POINTS_in_use_id638 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_use_id640 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DONNE_in_donne658 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_id_in_donne664 = new BitSet(new long[]{0x0000011000F80000L});
+    public static final BitSet FOLLOW_exp_in_donne670 = new BitSet(new long[]{0x0000000000000008L});
 
 }

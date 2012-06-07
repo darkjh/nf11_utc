@@ -34,6 +34,12 @@ public class LogoContext {
 	}
 	
 	public void setIdentifier(String id, Double d){
+		for (int i = top; i >= 0; i--) {
+			if(scopePile[i].checkId(id)){
+				scopePile[i].setId(id, d);
+				return;
+			}
+		}
 		scopePile[top].setId(id, d);
 	}
 	

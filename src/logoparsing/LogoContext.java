@@ -1,9 +1,29 @@
 package logoparsing;
 
+import java.util.HashMap;
+
 public class LogoContext {
 	public static final int nbMax = 100;
 	private LogoTableId[] scopePile = new LogoTableId[nbMax];
 	private int top = -1;
+	
+	private HashMap <String,LogoProcedure> listeProcedure = new HashMap <String,LogoProcedure>();
+	
+	/*
+	 * Liste procedure
+	 */
+	
+	public void addProcedure(LogoProcedure p){
+		listeProcedure.put(p.getNom(), p);
+	}
+	
+	public LogoProcedure getProcedureByName(String name){
+		return listeProcedure.get(name);
+	}
+	
+	/*
+	 * PILE
+	 */
 	
 	public void push(LogoTableId table){
 		top ++ ;

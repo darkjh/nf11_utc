@@ -42,6 +42,8 @@ tokens {
   GUILLEMET = '"';
   DONNE = 'DONNE';
   TANTQUE = 'TANTQUE';
+  POUR = 'POUR';
+  FIN = 'FIN';
 }
 @lexer::header {
   package logoparsing;
@@ -136,6 +138,40 @@ si	:
 tantque :
   TANTQUE^ boolExpr CO! liste_evaluation CF! 
   ;
+  
+param returns [LogoProcedureParameter p]:
+  DEUX_POINTS ID {$p = new LogoProcedureParameter($ID.text, 0);} 
+    -> ^(DEUX_POINTS ID) 
+  ;
+  
+list_param returns [ArrayList< LogoProcedureParameter > pl]
+@init {$pl = new ArrayList< LogoProcedureParameter >();}
+:
+  ( a = param 
+    {
+      $pl.add($a.p);
+    }
+   )* 
+  ;
+  
+procedure:
+  POUR^ ID a = list_param liste_evaluation FIN 
+    {
+      this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));
+    } 
+  ; 
+  
+appel
+@init{int c = 0;}
+:
+  ID^ ( expr{ c++;} )* 
+  { 
+    if(c != this.context.getProcedureByName($ID.text).getNbParams()){
+      setValide(false);
+      Log.appendnl("Procedure " + $ID.text + ": nombre de parametre non coherent.");
+    }
+  }
+  ;
 
 affect_id
 	:
@@ -182,6 +218,7 @@ instruction
 	  //| boolExpr
 	  | si
 	  | tantque
-	  
+	  | procedure
+	  | appel
 	;
    

@@ -1,10 +1,6 @@
 package logoparsing;
 
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class LogoTableId {
 	private Hashtable<String, Double> table_id;

@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class LogoProcedure {
 	private String nom;
 	private int mark;
-	ArrayList< LogoProcedureParameter > paramsList ;
+	private ArrayList< LogoProcedureParameter > paramsList ;
 	
 	public String getNom() {
 		return nom;
@@ -27,6 +27,11 @@ public class LogoProcedure {
 	public int getNbParams(){
 		return paramsList.size();
 	}
+	
+	public LogoProcedureParameter getParameterByIndex(int i){
+		return paramsList.get(i);
+	}
+	
 	
 	public LogoProcedure(String nom, int mk, ArrayList<LogoProcedureParameter> paramList) {
 		// TODO Auto-generated constructor stub

@@ -78,7 +78,7 @@ public class LogoFrame extends JFrame {
 			StringBuilder sb = new StringBuilder();
 			String s;
 			
-			c.setCurrentDirectory(new File("."));
+			c.setCurrentDirectory(new File("./Testers"));
 			c.setDialogTitle("Import logo file...");
 			
 			c.setFileFilter(new FileFilter() {
@@ -122,7 +122,7 @@ public class LogoFrame extends JFrame {
 			JFileChooser c = new JFileChooser();
 			PrintWriter out = null;
 			
-			c.setCurrentDirectory(new File("."));
+			c.setCurrentDirectory(new File("./Testers"));
 			c.setDialogTitle("Import logo file...");
 			
 			c.setFileFilter(new FileFilter() {
@@ -439,7 +439,7 @@ public class LogoFrame extends JFrame {
 		//table_id = new LogoTableId();
 		context = new LogoContext();
 
-		String program = getJProgramArea().getText().toUpperCase();
+		String program = getJProgramArea().getText();//.toUpperCase();
 		if (program.length() > 1 ) {
 			try {
 				// lexer	

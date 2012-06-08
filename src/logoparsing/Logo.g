@@ -76,7 +76,6 @@ COMMENTAIRE
 	;
 WS  :   (' '|'\t'|('\r'? '\n'))+ { skip(); } ;
 
-
 programme 
 	: 
 	{this.context.push(new LogoTableId());} liste_instructions -> ^(PROGRAMME liste_instructions)
@@ -115,6 +114,12 @@ liste_evaluation
 	{this.context.pop();} -> ^(LIST liste_instructions FINDELISTEVAL) 
 	;
 
+liste_evaluation_no_table
+  :
+  liste_instructions  -> ^(LIST liste_instructions FINDELISTEVAL)
+  ;
+
+
 repete
 	:
 	REPETE^ expr CO! liste_evaluation CF! //-> ^(REPETE expr ^(LIST liste_instructions))
@@ -140,7 +145,11 @@ tantque :
   ;
   
 param returns [LogoProcedureParameter p]:
-  DEUX_POINTS ID {$p = new LogoProcedureParameter($ID.text, 0);} 
+  DEUX_POINTS ID 
+  {
+    $p = new LogoProcedureParameter($ID.text, 0);
+    context.setIdentifier($ID.text, (double)0);
+  } 
     -> ^(DEUX_POINTS ID) 
   ;
   
@@ -155,10 +164,12 @@ list_param returns [ArrayList< LogoProcedureParameter > pl]
   ;
   
 procedure:
-  POUR^ ID a = list_param liste_evaluation FIN 
+  {this.context.push(new LogoTableId());}
+  POUR^ ID a = list_param liste_evaluation_no_table FIN 
     {
       this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));
-    } 
+      this.context.pop();
+    }
   ; 
   
 appel
@@ -177,7 +188,12 @@ affect_id
 	:
 	DONNE i=id expr
 	{
-		context.setIdentifier($i.rid, (double)0);	// occupy a place in the id table
+	  if(context.containsIDLocal($i.rid)){
+	    setValide(false);
+	    Log.appendnl("Identificateur deja defini: " + $i.rid);
+	  }
+	  else
+	    context.setIdentifier($i.rid, (double)0);	// occupy a place in the id table
 	}
 	  -> ^(DONNE id expr)
 	;

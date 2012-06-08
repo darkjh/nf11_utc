@@ -1,7 +1,7 @@
 DONNE "ABC 0
 TANTQUE :ABC < 10
 [
- DONNE "abc 100
+  DONNE "abc 100
   AV 10
   TG 30
   DONNE "ABC :ABC+1

@@ -1,7 +1,7 @@
 POUR carre :n :p
-    AV 10
+    AV :n
    TG 90
-   AV 10
+   AV :p
 FIN
 
 carre 15 16

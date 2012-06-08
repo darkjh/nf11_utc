@@ -13,6 +13,10 @@ public class LogoContext {
 	 * Liste procedure
 	 */
 	
+	public HashMap<String, LogoProcedure> getListeProcedure() {
+		return listeProcedure;
+	}
+
 	public void addProcedure(LogoProcedure p){
 		listeProcedure.put(p.getNom(), p);
 	}
@@ -34,6 +38,10 @@ public class LogoContext {
 		LogoTableId retVal = scopePile[top];
 		top --;
 		return retVal;
+	}
+	
+	public boolean containsIDLocal(String id){
+		return scopePile[top].checkId(id);
 	}
 	
 	public boolean containsID (String id){

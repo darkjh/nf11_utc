@@ -60,6 +60,8 @@ instruction
 	 | donne
 	 | si
 	 | tantque
+	 | procedure
+	 | appel
 	 | a=exp {Log.appendnl("Eval Expr: " + Double.toString($a.v));}
 	 | c=boolExpr {Log.appendnl(Boolean.toString($c.retVal));}
 	;
@@ -78,10 +80,61 @@ liste_instructions
 	{this.context.push(new LogoTableId());} ^(LIST (instruction)+ FINDELISTEVAL) {this.context.pop();}
 	;
 	
-liste_instructions_boucle
+liste_instructions_no_table
   :
   ^(LIST (instruction)+ FINDELISTEVAL)
   ;
+ 
+param returns [LogoProcedureParameter p]:
+ ^(DEUX_POINTS ID) {$p = new LogoProcedureParameter($ID.text, 0);} 
+ ;
+  
+list_param returns [ArrayList< LogoProcedureParameter > pl]
+@init {$pl = new ArrayList< LogoProcedureParameter >();}
+:
+  ( a = param 
+    {
+      $pl.add($a.p);
+    }
+   )* 
+  ;
+  
+procedure
+@init{
+int mark = 0;
+}:
+  ^(POUR ID a = list_param  {mark = input.mark();}. FIN) 
+  {
+    this.context.getListeProcedure().get($ID.text).setMark(mark);
+  } 
+; 
+
+appel
+@init{
+int c = 0;
+String varName = null;
+LogoProcedure proc = null;
+int mark = 0;
+}
+:
+  {this.context.push(new LogoTableId());}
+  ^(ID  {proc = context.getProcedureByName($ID.text); mark = proc.getMark();}
+    ( a = exp 
+		  { 
+		    varName = proc.getParameterByIndex(c).getNom();
+		    c++;
+		    context.setIdentifier(varName, $a.v);
+		  }
+		)*
+  ) 
+  { 
+      push(mark);
+      liste_instructions_no_table();
+      pop();
+      this.context.pop();
+  }
+  ;
+  
 
 repete
 @init {
@@ -93,7 +146,7 @@ repete
 	{
 		for(int i = 0; i < $n.v; i++) {
 			push(mark_list);
-			liste_instructions_boucle();
+			liste_instructions_no_table();
 			pop();
 		}
 		this.context.pop();
@@ -133,7 +186,7 @@ int mark_list = -1;
     if(boolExpr()){
       push(mark_list);
       //liste_instructions();
-      liste_instructions_boucle();
+      liste_instructions_no_table();
       pop();
       pop();
     }

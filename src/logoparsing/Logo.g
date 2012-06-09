@@ -1,6 +1,8 @@
 grammar Logo;
 options {
   output = AST;
+  backtrack=true;
+  memoize=true;
 }
 tokens {
   PROGRAMME;
@@ -44,6 +46,7 @@ tokens {
   TANTQUE = 'TANTQUE';
   POUR = 'POUR';
   FIN = 'FIN';
+  RET = 'RET';
 }
 @lexer::header {
   package logoparsing;
@@ -54,6 +57,8 @@ tokens {
 }
 @members{
   LogoContext context;
+  
+  ArrayList <String> LiseNomParam;
   	
   boolean valide = true;
   public boolean getValide(){
@@ -65,9 +70,17 @@ tokens {
   public void setContext(LogoContext ctxt) {
     this.context = ctxt;
   }
+  
+  public boolean nomExistDansLeParamListe(String vNom) {
+     for(int i = 0; i<LiseNomParam.size(); i++){
+        if(LiseNomParam.get(i).equals(vNom))
+          return true;
+     }
+     return false;
+  }
 }
 INT : 	('0'..'9')+;
-ID :  ('A'..'Z'|'a'..'z')( '0'..'9'|'A'..'Z'|'a'..'z'|'-')*;
+ID :  ('A'..'Z'|'a'..'z')( '0'..'9'|'A'..'Z'|'a'..'z'|'_')*;
 SYMBOLE_COMMENTAIRE
 	:	'//'
 	;
@@ -104,17 +117,21 @@ powExpr
 	
 atom
 	:
-	INT | PO! expr PF! | use_id
+	INT | PO! expr PF! | use_id  | appel
 	;
 
 liste_evaluation
 	:
 	{this.context.push(new LogoTableId());} 
-	liste_instructions  
+	liste_instructions
 	{this.context.pop();} -> ^(LIST liste_instructions FINDELISTEVAL) 
 	;
 
-liste_evaluation_no_table
+retExpr:
+  (RET^ expr)
+  ;
+
+liste_evaluation_procedure
   :
   liste_instructions  -> ^(LIST liste_instructions FINDELISTEVAL)
   ;
@@ -159,23 +176,30 @@ list_param returns [ArrayList< LogoProcedureParameter > pl]
   ( a = param 
     {
       $pl.add($a.p);
+      LiseNomParam.add($a.p.getNom());
     }
    )* 
   ;
   
 procedure:
-  {this.context.push(new LogoTableId());}
-  POUR^ ID a = list_param liste_evaluation_no_table FIN 
+  {
+    this.context.push(new LogoTableId());
+    LiseNomParam = new ArrayList <String>();
+  }
+  POUR^ ID a = list_param 
+    {this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));} 
+    liste_evaluation_procedure
+  FIN 
     {
-      this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));
+      LiseNomParam = null;
       this.context.pop();
     }
   ; 
-  
+
 appel
 @init{int c = 0;}
 :
-  ID^ ( expr{ c++;} )* 
+  ID^ ( expr { c++;} )* 
   { 
     if(c != this.context.getProcedureByName($ID.text).getNbParams()){
       setValide(false);
@@ -188,9 +212,13 @@ affect_id
 	:
 	DONNE i=id expr
 	{
-	  if(context.containsIDLocal($i.rid)){
-	    setValide(false);
-	    Log.appendnl("Identificateur deja defini: " + $i.rid);
+	  if(LiseNomParam != null){
+	    if(nomExistDansLeParamListe($i.rid)){
+	      setValide(false);
+	      Log.appendnl("Identificateur deja defini: " + $i.rid);
+	    }
+	    else
+	      context.setIdentifier($i.rid, (double)0);  // occupy a place in the id table
 	  }
 	  else
 	    context.setIdentifier($i.rid, (double)0);	// occupy a place in the id table
@@ -205,12 +233,11 @@ id returns [String rid]
 
 use_id
 	:	
-	DEUX_POINTS ID 
+	DEUX_POINTS ID
 	{
 	
 		if(!context.containsID($ID.text)){
 			setValide(false);
-			// System.out.println(Double.toString(table_id.getId($ID.text)));
 			Log.appendnl("Identificateur non defini: " + $ID.text);
 		}
 	}	
@@ -236,5 +263,6 @@ instruction
 	  | tantque
 	  | procedure
 	  | appel
+	  | retExpr
 	;
    

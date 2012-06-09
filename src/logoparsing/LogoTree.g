@@ -2,6 +2,8 @@ tree grammar LogoTree;
 options {
   tokenVocab = Logo;
   ASTLabelType=CommonTree;
+  backtrack=true;
+  memoize=true;
 }
 @header {
   package logoparsing;
@@ -11,6 +13,7 @@ options {
 @members{
   Traceur traceur;
   LogoContext context;
+  double foncRetVal;
   
   public void initialize(javax.swing.JPanel logo) {
   	traceur = Traceur.getInstance();
@@ -41,7 +44,8 @@ exp returns [double v]
 	| ^(DIVI x=exp y=exp) {$v = $x.v / $y.v;}
 	| ^(POW x=exp y=exp) {$v = Math.pow($x.v, $y.v);}
 	| INT {$v = Double.parseDouble($INT.text);}
-	| a=use_id {$v = $a.d;}
+	| a = use_id {$v = $a.d;}
+	| b = appel {$v = $b.retVal;}
 	;
 
 instruction
@@ -64,6 +68,7 @@ instruction
 	 | appel
 	 | a=exp {Log.appendnl("Eval Expr: " + Double.toString($a.v));}
 	 | c=boolExpr {Log.appendnl(Boolean.toString($c.retVal));}
+	 | retExpr
 	;
 
 boolExpr returns [boolean retVal]
@@ -80,7 +85,7 @@ liste_instructions
 	{this.context.push(new LogoTableId());} ^(LIST (instruction)+ FINDELISTEVAL) {this.context.pop();}
 	;
 	
-liste_instructions_no_table
+liste_instructions_no_table 
   :
   ^(LIST (instruction)+ FINDELISTEVAL)
   ;
@@ -103,18 +108,22 @@ procedure
 @init{
 int mark = 0;
 }:
-  ^(POUR ID a = list_param  {mark = input.mark();}. FIN) 
+  ^(POUR ID a = list_param  {mark = input.mark();} . FIN) 
   {
     this.context.getListeProcedure().get($ID.text).setMark(mark);
   } 
 ; 
 
-appel
+retExpr :
+  ^(RET a = exp) { foncRetVal = $a.v; }
+  ;
+
+appel returns [double retVal]
 @init{
-int c = 0;
-String varName = null;
-LogoProcedure proc = null;
-int mark = 0;
+	int c = 0;
+	String varName = null;
+	LogoProcedure proc = null;
+	int mark = 0;
 }
 :
   {this.context.push(new LogoTableId());}
@@ -131,6 +140,7 @@ int mark = 0;
       push(mark);
       liste_instructions_no_table();
       pop();
+      $retVal = foncRetVal;
       this.context.pop();
   }
   ;
@@ -206,7 +216,7 @@ id returns [String rid]
 	
 use_id returns [Double d]
 	:
-	^(DEUX_POINTS ID) { d = context.getIDValue($ID.text);}
+	^(DEUX_POINTS ID) { $d = context.getIDValue($ID.text);}
 	;
 	
 donne

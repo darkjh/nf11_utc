@@ -141,7 +141,7 @@ public class LogoFrame extends JFrame {
 				Log.appendnl("sauvegarde terminee");
 				FileWriter fileWriter;
 				try {
-					fileWriter = new FileWriter(c.getSelectedFile().getPath() + ".lgo");
+					fileWriter = new FileWriter(c.getSelectedFile().getPath());
 					out = new PrintWriter(fileWriter, true); // true
 					out.print(getJProgramArea().getText());
 					out.close();

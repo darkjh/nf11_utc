@@ -1,7 +1,6 @@
 package logoparsing;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class LogoProcedure {
 	private String nom;
@@ -26,6 +25,14 @@ public class LogoProcedure {
 	
 	public int getNbParams(){
 		return paramsList.size();
+	}
+	
+	public boolean containsParam( String paramName){
+		for (int i = 0; i < paramsList.size(); i++) {
+			if (paramsList.get(i).getNom() == paramName)
+				return true;
+		}
+		return false;
 	}
 	
 	public LogoProcedureParameter getParameterByIndex(int i){

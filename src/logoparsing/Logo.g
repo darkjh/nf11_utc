@@ -137,7 +137,6 @@ liste_evaluation_procedure
   liste_instructions  -> ^(LIST liste_instructions FINDELISTEVAL)
   ;
 
-
 repete
 	:
 	REPETE^ expr CO! liste_evaluation CF! //-> ^(REPETE expr ^(LIST liste_instructions))
@@ -217,7 +216,7 @@ appel
   { 
     if(c != this.context.getProcedureByName($ID.text).getNbParams()){
       setValide(false);
-      Log.appendnl("Procedure " + $ID.text + ": nombre de parametre mauvais.");
+      Log.appendnl("Procedure error - " + $ID.text + ": bad parametre number.");
     }
   }
   ;
@@ -229,7 +228,7 @@ affect_id
 	  if(ListNomParam != null){
 	    if(nomExistDansLeParamListe($i.rid)){
 	      setValide(false);
-	      Log.appendnl("Can not modify the value of the parameter : " + $i.rid);
+	      Log.appendnl("Procedure error - Can not modify the value of the parameter : " + $i.rid);
 	    }
 	    else
 	      context.setIdentifier($i.rid, (double)0);  // occupy a place in the id table
@@ -252,7 +251,7 @@ use_id
 	
 		if(!context.containsID($ID.text)){
 			setValide(false);
-			Log.appendnl("Identificateur non defini: " + $ID.text);
+			Log.appendnl("Identificateur is not defined: " + $ID.text);
 		}
 	}	
 						-> ^(DEUX_POINTS ID)

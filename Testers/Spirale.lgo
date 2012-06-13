@@ -1,0 +1,7 @@
+POUR Spirale1 :cote :angle
+AV :cote
+TD :angle
+Spirale1 :cote+2 :angle
+FIN
+
+Spirale1 2 185

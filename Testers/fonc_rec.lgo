@@ -1,0 +1,9 @@
+POUR COMPTER :n
+    SI :n == 0
+        [RET 0]
+        [RET 1+COMPTER :n-1 ]
+FIN
+
+AV COMPTER 100
+TG 90
+AV 100

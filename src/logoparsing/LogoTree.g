@@ -82,7 +82,9 @@ boolExpr returns [boolean retVal]
 
 liste_instructions
 	:
-	{this.context.push(new LogoTableId());} ^(LIST (instruction)+ FINDELISTEVAL) {this.context.pop();}
+	{this.context.push(new LogoTableId());} 
+	^(LIST (instruction)+ FINDELISTEVAL) 
+	{this.context.pop();}
 	;
 	
 liste_instructions_no_table 
@@ -104,7 +106,7 @@ list_param returns [ArrayList< LogoProcedureParameter > pl]
    )* 
   ;
   
-procedure
+procedure  // declaration n'a pas besoin de portee, car ce test est deja fait par le parser
 @init{
 int mark = 0;
 }:
@@ -113,6 +115,8 @@ int mark = 0;
     this.context.getListeProcedure().get($ID.text).setMark(mark);
   } 
 ; 
+
+
 
 retExpr :
   ^(RET a = exp) { foncRetVal = $a.v; }

@@ -2,7 +2,7 @@ package logoparsing;
 
 public class LogoProcedureParameter {
 	private String nomParam;
-	private double valeurParam;
+	//private double valeurParam;
 	
 	public String getNom() {
 		return nomParam;
@@ -11,15 +11,15 @@ public class LogoProcedureParameter {
 		this.nomParam = nom;
 	}
 	
-	public double getValeur() {
+	/*public double getValeur() {
 		return valeurParam;
 	}
 	public void setValeur(double valeur) {
 		this.valeurParam = valeur;
-	}
+	}*/
 	
 	public LogoProcedureParameter(String nomParam, double valeur){
 		this.nomParam = nomParam;
-		this.valeurParam = valeur;
+		//this.valeurParam = valeur;
 	}
 }

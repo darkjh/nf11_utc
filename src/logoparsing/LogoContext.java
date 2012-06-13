@@ -31,24 +31,19 @@ public class LogoContext {
 	/*
 	 * PILE
 	 */
-	@SuppressWarnings("deprecation")
 	public void push(LogoTableId table){
 		top ++ ;
 
-		if (top < nbMax)
-			scopePile[top]=table;
-		else{
-			Log.appendnl("Pile deborde...");
-			//Thread.currentThread().suspend();
-		}
+		if (top == nbMax)
+			Log.appendnl("Pile deborde: SIZE_MAX = "+ nbMax);
+		
+		scopePile[top]=table;
+		
 	}
 
 	public LogoTableId pop(){
-		LogoTableId retVal = null;
-		if (top < nbMax){
-			retVal = scopePile[top];
-			top --;
-		}
+		LogoTableId retVal = scopePile[top];;
+		top --;
 		return retVal;
 	}
 

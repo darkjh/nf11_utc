@@ -57,8 +57,15 @@ tokens {
 }
 @members{
   LogoContext context;
+  ArrayList <String> ListNomParam;
   
-  ArrayList <String> LiseNomParam;
+  public boolean nomExistDansLeParamListe(String vNom) {
+     for(int i = 0; i<ListNomParam.size(); i++){
+        if(ListNomParam.get(i).equals(vNom))
+          return true;
+     }
+     return false;
+  }
   	
   boolean valide = true;
   public boolean getValide(){
@@ -71,13 +78,7 @@ tokens {
     this.context = ctxt;
   }
   
-  public boolean nomExistDansLeParamListe(String vNom) {
-     for(int i = 0; i<LiseNomParam.size(); i++){
-        if(LiseNomParam.get(i).equals(vNom))
-          return true;
-     }
-     return false;
-  }
+  
 }
 INT : 	('0'..'9')+;
 ID :  ('A'..'Z'|'a'..'z')( '0'..'9'|'A'..'Z'|'a'..'z'|'_')*;
@@ -176,23 +177,29 @@ list_param returns [ArrayList< LogoProcedureParameter > pl]
   ( a = param 
     {
       $pl.add($a.p);
-      LiseNomParam.add($a.p.getNom());
-    }
+	    if(!nomExistDansLeParamListe($a.p.getNom())){
+	      ListNomParam.add($a.p.getNom());
+	    }
+	    else{
+	      setValide(false);
+	      Log.appendnl("Procedure error : "+$a.p.getNom() + " --> parameter name duplicated.");
+	    }
+	  }
    )* 
   ;
   
 procedure:
   {
     this.context.push(new LogoTableId());
-    LiseNomParam = new ArrayList <String>();
+    ListNomParam = new ArrayList <String>();
   }
   POUR^ ID a = list_param 
     {this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));} 
     liste_evaluation_procedure
   FIN 
     {
-      LiseNomParam = null;
-      this.context.pop();
+      ListNomParam = null;
+      this.context.pop(); 
     }
   ; 
 
@@ -212,7 +219,7 @@ affect_id
 	:
 	DONNE i=id expr
 	{
-	  if(LiseNomParam != null){
+	  if(ListNomParam != null){
 	    if(nomExistDansLeParamListe($i.rid)){
 	      setValide(false);
 	      Log.appendnl("Identificateur deja defini: " + $i.rid);

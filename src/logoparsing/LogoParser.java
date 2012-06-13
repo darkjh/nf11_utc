@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-09 23:50:39
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g 2012-06-13 15:58:48
 
   package logoparsing;
   import logogui.Log;
@@ -91,8 +91,15 @@ public class LogoParser extends Parser {
 
 
       LogoContext context;
+      ArrayList <String> ListNomParam;
       
-      ArrayList <String> LiseNomParam;
+      public boolean nomExistDansLeParamListe(String vNom) {
+         for(int i = 0; i<ListNomParam.size(); i++){
+            if(ListNomParam.get(i).equals(vNom))
+              return true;
+         }
+         return false;
+      }
       	
       boolean valide = true;
       public boolean getValide(){
@@ -105,13 +112,7 @@ public class LogoParser extends Parser {
         this.context = ctxt;
       }
       
-      public boolean nomExistDansLeParamListe(String vNom) {
-         for(int i = 0; i<LiseNomParam.size(); i++){
-            if(LiseNomParam.get(i).equals(vNom))
-              return true;
-         }
-         return false;
-      }
+      
 
 
     public static class programme_return extends ParserRuleReturnScope {
@@ -120,7 +121,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "programme"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:92:1: programme : liste_instructions -> ^( PROGRAMME liste_instructions ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:93:1: programme : liste_instructions -> ^( PROGRAMME liste_instructions ) ;
     public final LogoParser.programme_return programme() throws RecognitionException {
         LogoParser.programme_return retval = new LogoParser.programme_return();
         retval.start = input.LT(1);
@@ -133,8 +134,8 @@ public class LogoParser extends Parser {
         RewriteRuleSubtreeStream stream_liste_instructions=new RewriteRuleSubtreeStream(adaptor,"rule liste_instructions");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:93:2: ( liste_instructions -> ^( PROGRAMME liste_instructions ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:94:2: liste_instructions
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:94:2: ( liste_instructions -> ^( PROGRAMME liste_instructions ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:95:2: liste_instructions
             {
             if ( state.backtracking==0 ) {
               this.context.push(new LogoTableId());
@@ -159,9 +160,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 94:61: -> ^( PROGRAMME liste_instructions )
+            // 95:61: -> ^( PROGRAMME liste_instructions )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:94:64: ^( PROGRAMME liste_instructions )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:95:64: ^( PROGRAMME liste_instructions )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(PROGRAMME, "PROGRAMME"), root_1);
@@ -203,7 +204,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "liste_instructions"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:97:1: liste_instructions : ( instruction )+ ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:98:1: liste_instructions : ( instruction )+ ;
     public final LogoParser.liste_instructions_return liste_instructions() throws RecognitionException {
         LogoParser.liste_instructions_return retval = new LogoParser.liste_instructions_return();
         retval.start = input.LT(1);
@@ -216,12 +217,12 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:98:2: ( ( instruction )+ )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:99:4: ( instruction )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:99:2: ( ( instruction )+ )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:100:4: ( instruction )+
             {
             root_0 = (Object)adaptor.nil();
 
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:99:4: ( instruction )+
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:100:4: ( instruction )+
             int cnt1=0;
             loop1:
             do {
@@ -235,7 +236,7 @@ public class LogoParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:99:5: instruction
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:100:5: instruction
             	    {
             	    pushFollow(FOLLOW_instruction_in_liste_instructions534);
             	    instruction2=instruction();
@@ -287,7 +288,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "expr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:102:1: expr : sumExpr ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:103:1: expr : sumExpr ;
     public final LogoParser.expr_return expr() throws RecognitionException {
         LogoParser.expr_return retval = new LogoParser.expr_return();
         retval.start = input.LT(1);
@@ -300,8 +301,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:102:7: ( sumExpr )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:103:2: sumExpr
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:103:7: ( sumExpr )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:104:2: sumExpr
             {
             root_0 = (Object)adaptor.nil();
 
@@ -341,7 +342,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "sumExpr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:105:1: sumExpr : multExpr ( ( PLUS | MOINS ) multExpr )* ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:106:1: sumExpr : multExpr ( ( PLUS | MOINS ) multExpr )* ;
     public final LogoParser.sumExpr_return sumExpr() throws RecognitionException {
         LogoParser.sumExpr_return retval = new LogoParser.sumExpr_return();
         retval.start = input.LT(1);
@@ -360,8 +361,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:106:2: ( multExpr ( ( PLUS | MOINS ) multExpr )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:2: multExpr ( ( PLUS | MOINS ) multExpr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:2: ( multExpr ( ( PLUS | MOINS ) multExpr )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:2: multExpr ( ( PLUS | MOINS ) multExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -371,7 +372,7 @@ public class LogoParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, multExpr4.getTree());
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:11: ( ( PLUS | MOINS ) multExpr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:11: ( ( PLUS | MOINS ) multExpr )*
             loop3:
             do {
                 int alt3=2;
@@ -399,9 +400,9 @@ public class LogoParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:12: ( PLUS | MOINS ) multExpr
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:12: ( PLUS | MOINS ) multExpr
             	    {
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:12: ( PLUS | MOINS )
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:12: ( PLUS | MOINS )
             	    int alt2=2;
             	    int LA2_0 = input.LA(1);
 
@@ -420,7 +421,7 @@ public class LogoParser extends Parser {
             	    }
             	    switch (alt2) {
             	        case 1 :
-            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:13: PLUS
+            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:13: PLUS
             	            {
             	            PLUS5=(Token)match(input,PLUS,FOLLOW_PLUS_in_sumExpr565); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -431,7 +432,7 @@ public class LogoParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:19: MOINS
+            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:19: MOINS
             	            {
             	            MOINS6=(Token)match(input,MOINS,FOLLOW_MOINS_in_sumExpr568); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -489,7 +490,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "multExpr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:109:1: multExpr : powExpr ( ( MULTI | DIVI ) powExpr )* ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:110:1: multExpr : powExpr ( ( MULTI | DIVI ) powExpr )* ;
     public final LogoParser.multExpr_return multExpr() throws RecognitionException {
         LogoParser.multExpr_return retval = new LogoParser.multExpr_return();
         retval.start = input.LT(1);
@@ -508,8 +509,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:110:2: ( powExpr ( ( MULTI | DIVI ) powExpr )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:2: powExpr ( ( MULTI | DIVI ) powExpr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:2: ( powExpr ( ( MULTI | DIVI ) powExpr )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:2: powExpr ( ( MULTI | DIVI ) powExpr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -519,7 +520,7 @@ public class LogoParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, powExpr8.getTree());
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:10: ( ( MULTI | DIVI ) powExpr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:10: ( ( MULTI | DIVI ) powExpr )*
             loop5:
             do {
                 int alt5=2;
@@ -547,9 +548,9 @@ public class LogoParser extends Parser {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:11: ( MULTI | DIVI ) powExpr
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:11: ( MULTI | DIVI ) powExpr
             	    {
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:11: ( MULTI | DIVI )
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:11: ( MULTI | DIVI )
             	    int alt4=2;
             	    int LA4_0 = input.LA(1);
 
@@ -568,7 +569,7 @@ public class LogoParser extends Parser {
             	    }
             	    switch (alt4) {
             	        case 1 :
-            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:12: MULTI
+            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:12: MULTI
             	            {
             	            MULTI9=(Token)match(input,MULTI,FOLLOW_MULTI_in_multExpr589); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -579,7 +580,7 @@ public class LogoParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:19: DIVI
+            	            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:19: DIVI
             	            {
             	            DIVI10=(Token)match(input,DIVI,FOLLOW_DIVI_in_multExpr592); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
@@ -637,7 +638,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "powExpr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:113:1: powExpr : atom ( POW atom )* ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:114:1: powExpr : atom ( POW atom )* ;
     public final LogoParser.powExpr_return powExpr() throws RecognitionException {
         LogoParser.powExpr_return retval = new LogoParser.powExpr_return();
         retval.start = input.LT(1);
@@ -654,8 +655,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:114:2: ( atom ( POW atom )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:2: atom ( POW atom )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:2: ( atom ( POW atom )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:116:2: atom ( POW atom )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -665,7 +666,7 @@ public class LogoParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, atom12.getTree());
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:7: ( POW atom )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:116:7: ( POW atom )*
             loop6:
             do {
                 int alt6=2;
@@ -684,7 +685,7 @@ public class LogoParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:8: POW atom
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:116:8: POW atom
             	    {
             	    POW13=(Token)match(input,POW,FOLLOW_POW_in_powExpr612); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
@@ -736,7 +737,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:118:1: atom : ( INT | PO expr PF | use_id | appel );
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:119:1: atom : ( INT | PO expr PF | use_id | appel );
     public final LogoParser.atom_return atom() throws RecognitionException {
         LogoParser.atom_return retval = new LogoParser.atom_return();
         retval.start = input.LT(1);
@@ -759,7 +760,7 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:119:2: ( INT | PO expr PF | use_id | appel )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:120:2: ( INT | PO expr PF | use_id | appel )
             int alt7=4;
             switch ( input.LA(1) ) {
             case INT:
@@ -792,7 +793,7 @@ public class LogoParser extends Parser {
 
             switch (alt7) {
                 case 1 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:120:2: INT
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:121:2: INT
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -805,7 +806,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:120:8: PO expr PF
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:121:8: PO expr PF
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -821,7 +822,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:120:23: use_id
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:121:23: use_id
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -835,7 +836,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:120:33: appel
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:121:33: appel
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -877,7 +878,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "liste_evaluation"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:123:1: liste_evaluation : liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:124:1: liste_evaluation : liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) ;
     public final LogoParser.liste_evaluation_return liste_evaluation() throws RecognitionException {
         LogoParser.liste_evaluation_return retval = new LogoParser.liste_evaluation_return();
         retval.start = input.LT(1);
@@ -890,8 +891,8 @@ public class LogoParser extends Parser {
         RewriteRuleSubtreeStream stream_liste_instructions=new RewriteRuleSubtreeStream(adaptor,"rule liste_instructions");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:124:2: ( liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:125:2: liste_instructions
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:125:2: ( liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:126:2: liste_instructions
             {
             if ( state.backtracking==0 ) {
               this.context.push(new LogoTableId());
@@ -919,9 +920,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 127:24: -> ^( LIST liste_instructions FINDELISTEVAL )
+            // 128:24: -> ^( LIST liste_instructions FINDELISTEVAL )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:127:27: ^( LIST liste_instructions FINDELISTEVAL )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:128:27: ^( LIST liste_instructions FINDELISTEVAL )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LIST, "LIST"), root_1);
@@ -964,7 +965,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "retExpr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:130:1: retExpr : ( RET expr ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:131:1: retExpr : ( RET expr ) ;
     public final LogoParser.retExpr_return retExpr() throws RecognitionException {
         LogoParser.retExpr_return retval = new LogoParser.retExpr_return();
         retval.start = input.LT(1);
@@ -979,13 +980,13 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:130:8: ( ( RET expr ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:131:3: ( RET expr )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:131:8: ( ( RET expr ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:132:3: ( RET expr )
             {
             root_0 = (Object)adaptor.nil();
 
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:131:3: ( RET expr )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:131:4: RET expr
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:132:3: ( RET expr )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:132:4: RET expr
             {
             RET22=(Token)match(input,RET,FOLLOW_RET_in_retExpr691); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
@@ -1031,7 +1032,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "liste_evaluation_procedure"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:134:1: liste_evaluation_procedure : liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:135:1: liste_evaluation_procedure : liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) ;
     public final LogoParser.liste_evaluation_procedure_return liste_evaluation_procedure() throws RecognitionException {
         LogoParser.liste_evaluation_procedure_return retval = new LogoParser.liste_evaluation_procedure_return();
         retval.start = input.LT(1);
@@ -1044,8 +1045,8 @@ public class LogoParser extends Parser {
         RewriteRuleSubtreeStream stream_liste_instructions=new RewriteRuleSubtreeStream(adaptor,"rule liste_instructions");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:135:3: ( liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:136:3: liste_instructions
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:136:3: ( liste_instructions -> ^( LIST liste_instructions FINDELISTEVAL ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:137:3: liste_instructions
             {
             pushFollow(FOLLOW_liste_instructions_in_liste_evaluation_procedure710);
             liste_instructions24=liste_instructions();
@@ -1067,9 +1068,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 136:23: -> ^( LIST liste_instructions FINDELISTEVAL )
+            // 137:23: -> ^( LIST liste_instructions FINDELISTEVAL )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:136:26: ^( LIST liste_instructions FINDELISTEVAL )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:137:26: ^( LIST liste_instructions FINDELISTEVAL )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot((Object)adaptor.create(LIST, "LIST"), root_1);
@@ -1112,7 +1113,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "repete"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:140:1: repete : REPETE expr CO liste_evaluation CF ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:141:1: repete : REPETE expr CO liste_evaluation CF ;
     public final LogoParser.repete_return repete() throws RecognitionException {
         LogoParser.repete_return retval = new LogoParser.repete_return();
         retval.start = input.LT(1);
@@ -1133,8 +1134,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:141:2: ( REPETE expr CO liste_evaluation CF )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:142:2: REPETE expr CO liste_evaluation CF
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:142:2: ( REPETE expr CO liste_evaluation CF )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:143:2: REPETE expr CO liste_evaluation CF
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1187,7 +1188,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "boolExpr"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:145:1: boolExpr : expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:146:1: boolExpr : expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr ;
     public final LogoParser.boolExpr_return boolExpr() throws RecognitionException {
         LogoParser.boolExpr_return retval = new LogoParser.boolExpr_return();
         retval.start = input.LT(1);
@@ -1212,8 +1213,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:146:2: ( expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:147:2: expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:147:2: ( expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:148:2: expr ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE ) expr
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1223,7 +1224,7 @@ public class LogoParser extends Parser {
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, expr30.getTree());
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:147:7: ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:148:7: ( SUP | INF | EGALE | SUP_EGALE | INF_EGALE )
             int alt8=5;
             switch ( input.LA(1) ) {
             case SUP:
@@ -1261,7 +1262,7 @@ public class LogoParser extends Parser {
 
             switch (alt8) {
                 case 1 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:148:2: SUP
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:149:2: SUP
                     {
                     SUP31=(Token)match(input,SUP,FOLLOW_SUP_in_boolExpr764); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1272,7 +1273,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:149:6: INF
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:150:6: INF
                     {
                     INF32=(Token)match(input,INF,FOLLOW_INF_in_boolExpr772); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1283,7 +1284,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:150:6: EGALE
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:151:6: EGALE
                     {
                     EGALE33=(Token)match(input,EGALE,FOLLOW_EGALE_in_boolExpr780); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1294,7 +1295,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:151:6: SUP_EGALE
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:152:6: SUP_EGALE
                     {
                     SUP_EGALE34=(Token)match(input,SUP_EGALE,FOLLOW_SUP_EGALE_in_boolExpr788); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1305,7 +1306,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:152:6: INF_EGALE
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:153:6: INF_EGALE
                     {
                     INF_EGALE35=(Token)match(input,INF_EGALE,FOLLOW_INF_EGALE_in_boolExpr796); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
@@ -1354,7 +1355,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "si"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:156:1: si : SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )? ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:157:1: si : SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )? ;
     public final LogoParser.si_return si() throws RecognitionException {
         LogoParser.si_return retval = new LogoParser.si_return();
         retval.start = input.LT(1);
@@ -1381,8 +1382,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:156:4: ( SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )? )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:157:2: SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )?
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:157:4: ( SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )? )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:158:2: SI boolExpr CO liste_evaluation CF ( CO liste_evaluation CF )?
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1405,7 +1406,7 @@ public class LogoParser extends Parser {
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, liste_evaluation40.getTree());
             CF41=(Token)match(input,CF,FOLLOW_CF_in_si823); if (state.failed) return retval;
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:157:40: ( CO liste_evaluation CF )?
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:158:40: ( CO liste_evaluation CF )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1414,7 +1415,7 @@ public class LogoParser extends Parser {
             }
             switch (alt9) {
                 case 1 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:157:41: CO liste_evaluation CF
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:158:41: CO liste_evaluation CF
                     {
                     CO42=(Token)match(input,CO,FOLLOW_CO_in_si827); if (state.failed) return retval;
                     pushFollow(FOLLOW_liste_evaluation_in_si830);
@@ -1460,7 +1461,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "tantque"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:160:1: tantque : TANTQUE boolExpr CO liste_evaluation CF ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:161:1: tantque : TANTQUE boolExpr CO liste_evaluation CF ;
     public final LogoParser.tantque_return tantque() throws RecognitionException {
         LogoParser.tantque_return retval = new LogoParser.tantque_return();
         retval.start = input.LT(1);
@@ -1481,8 +1482,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:160:9: ( TANTQUE boolExpr CO liste_evaluation CF )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:161:3: TANTQUE boolExpr CO liste_evaluation CF
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:161:9: ( TANTQUE boolExpr CO liste_evaluation CF )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:162:3: TANTQUE boolExpr CO liste_evaluation CF
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1536,7 +1537,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "param"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:164:1: param returns [LogoProcedureParameter p] : DEUX_POINTS ID -> ^( DEUX_POINTS ID ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:165:1: param returns [LogoProcedureParameter p] : DEUX_POINTS ID -> ^( DEUX_POINTS ID ) ;
     public final LogoParser.param_return param() throws RecognitionException {
         LogoParser.param_return retval = new LogoParser.param_return();
         retval.start = input.LT(1);
@@ -1553,8 +1554,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:164:41: ( DEUX_POINTS ID -> ^( DEUX_POINTS ID ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:165:3: DEUX_POINTS ID
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:165:41: ( DEUX_POINTS ID -> ^( DEUX_POINTS ID ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:166:3: DEUX_POINTS ID
             {
             DEUX_POINTS50=(Token)match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_param878); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DEUX_POINTS.add(DEUX_POINTS50);
@@ -1582,9 +1583,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 170:5: -> ^( DEUX_POINTS ID )
+            // 171:5: -> ^( DEUX_POINTS ID )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:170:8: ^( DEUX_POINTS ID )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:171:8: ^( DEUX_POINTS ID )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_DEUX_POINTS.nextNode(), root_1);
@@ -1627,7 +1628,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "list_param"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:173:1: list_param returns [ArrayList< LogoProcedureParameter > pl] : (a= param )* ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:174:1: list_param returns [ArrayList< LogoProcedureParameter > pl] : (a= param )* ;
     public final LogoParser.list_param_return list_param() throws RecognitionException {
         LogoParser.list_param_return retval = new LogoParser.list_param_return();
         retval.start = input.LT(1);
@@ -1641,12 +1642,12 @@ public class LogoParser extends Parser {
         retval.pl = new ArrayList< LogoProcedureParameter >();
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:175:1: ( (a= param )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:176:3: (a= param )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:176:1: ( (a= param )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:177:3: (a= param )*
             {
             root_0 = (Object)adaptor.nil();
 
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:176:3: (a= param )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:177:3: (a= param )*
             loop10:
             do {
                 int alt10=2;
@@ -1659,7 +1660,7 @@ public class LogoParser extends Parser {
 
                 switch (alt10) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:176:5: a= param
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:177:5: a= param
             	    {
             	    pushFollow(FOLLOW_param_in_list_param929);
             	    a=param();
@@ -1670,8 +1671,14 @@ public class LogoParser extends Parser {
             	    if ( state.backtracking==0 ) {
 
             	            retval.pl.add((a!=null?a.p:null));
-            	            LiseNomParam.add((a!=null?a.p:null).getNom());
-            	          
+            	      	    if(!nomExistDansLeParamListe((a!=null?a.p:null).getNom())){
+            	      	      ListNomParam.add((a!=null?a.p:null).getNom());
+            	      	    }
+            	      	    else{
+            	      	      setValide(false);
+            	      	      Log.appendnl("Procedure error : "+(a!=null?a.p:null).getNom() + " --> parameter name duplicated.");
+            	      	    }
+            	      	  
             	    }
 
             	    }
@@ -1712,7 +1719,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "procedure"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:184:1: procedure : POUR ID a= list_param liste_evaluation_procedure FIN ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:191:1: procedure : POUR ID a= list_param liste_evaluation_procedure FIN ;
     public final LogoParser.procedure_return procedure() throws RecognitionException {
         LogoParser.procedure_return retval = new LogoParser.procedure_return();
         retval.start = input.LT(1);
@@ -1733,15 +1740,15 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:184:10: ( POUR ID a= list_param liste_evaluation_procedure FIN )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:185:3: POUR ID a= list_param liste_evaluation_procedure FIN
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:191:10: ( POUR ID a= list_param liste_evaluation_procedure FIN )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:192:3: POUR ID a= list_param liste_evaluation_procedure FIN
             {
             root_0 = (Object)adaptor.nil();
 
             if ( state.backtracking==0 ) {
 
                   this.context.push(new LogoTableId());
-                  LiseNomParam = new ArrayList <String>();
+                  ListNomParam = new ArrayList <String>();
                 
             }
             POUR52=(Token)match(input,POUR,FOLLOW_POUR_in_procedure961); if (state.failed) return retval;
@@ -1776,8 +1783,8 @@ public class LogoParser extends Parser {
             }
             if ( state.backtracking==0 ) {
 
-                    LiseNomParam = null;
-                    this.context.pop();
+                    ListNomParam = null;
+                    this.context.pop(); 
                   
             }
 
@@ -1810,7 +1817,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "appel"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:199:1: appel : ID ( expr )* ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:206:1: appel : ID ( expr )* ;
     public final LogoParser.appel_return appel() throws RecognitionException {
         LogoParser.appel_return retval = new LogoParser.appel_return();
         retval.start = input.LT(1);
@@ -1826,8 +1833,8 @@ public class LogoParser extends Parser {
         int c = 0;
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:201:1: ( ID ( expr )* )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:202:3: ID ( expr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:208:1: ( ID ( expr )* )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:209:3: ID ( expr )*
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1836,14 +1843,14 @@ public class LogoParser extends Parser {
             ID56_tree = (Object)adaptor.create(ID56);
             root_0 = (Object)adaptor.becomeRoot(ID56_tree, root_0);
             }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:202:7: ( expr )*
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:209:7: ( expr )*
             loop11:
             do {
                 int alt11=2;
                 alt11 = dfa11.predict(input);
                 switch (alt11) {
             	case 1 :
-            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:202:9: expr
+            	    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:209:9: expr
             	    {
             	    pushFollow(FOLLOW_expr_in_appel1018);
             	    expr57=expr();
@@ -1901,7 +1908,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "affect_id"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:211:1: affect_id : DONNE i= id expr -> ^( DONNE id expr ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:218:1: affect_id : DONNE i= id expr -> ^( DONNE id expr ) ;
     public final LogoParser.affect_id_return affect_id() throws RecognitionException {
         LogoParser.affect_id_return retval = new LogoParser.affect_id_return();
         retval.start = input.LT(1);
@@ -1920,8 +1927,8 @@ public class LogoParser extends Parser {
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:212:2: ( DONNE i= id expr -> ^( DONNE id expr ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:213:2: DONNE i= id expr
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:219:2: ( DONNE i= id expr -> ^( DONNE id expr ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:220:2: DONNE i= id expr
             {
             DONNE58=(Token)match(input,DONNE,FOLLOW_DONNE_in_affect_id1041); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DONNE.add(DONNE58);
@@ -1940,7 +1947,7 @@ public class LogoParser extends Parser {
             if ( state.backtracking==0 ) stream_expr.add(expr59.getTree());
             if ( state.backtracking==0 ) {
 
-              	  if(LiseNomParam != null){
+              	  if(ListNomParam != null){
               	    if(nomExistDansLeParamListe((i!=null?i.rid:null))){
               	      setValide(false);
               	      Log.appendnl("Identificateur deja defini: " + (i!=null?i.rid:null));
@@ -1966,9 +1973,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 226:4: -> ^( DONNE id expr )
+            // 233:4: -> ^( DONNE id expr )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:226:7: ^( DONNE id expr )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:233:7: ^( DONNE id expr )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_DONNE.nextNode(), root_1);
@@ -2012,7 +2019,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "id"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:229:1: id returns [String rid] : GUILLEMET ID -> ^( GUILLEMET ID ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:236:1: id returns [String rid] : GUILLEMET ID -> ^( GUILLEMET ID ) ;
     public final LogoParser.id_return id() throws RecognitionException {
         LogoParser.id_return retval = new LogoParser.id_return();
         retval.start = input.LT(1);
@@ -2029,8 +2036,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:230:2: ( GUILLEMET ID -> ^( GUILLEMET ID ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:231:2: GUILLEMET ID
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:237:2: ( GUILLEMET ID -> ^( GUILLEMET ID ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:238:2: GUILLEMET ID
             {
             GUILLEMET60=(Token)match(input,GUILLEMET,FOLLOW_GUILLEMET_in_id1082); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_GUILLEMET.add(GUILLEMET60);
@@ -2055,9 +2062,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 231:34: -> ^( GUILLEMET ID )
+            // 238:34: -> ^( GUILLEMET ID )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:231:37: ^( GUILLEMET ID )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:238:37: ^( GUILLEMET ID )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_GUILLEMET.nextNode(), root_1);
@@ -2099,7 +2106,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "use_id"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:234:1: use_id : DEUX_POINTS ID -> ^( DEUX_POINTS ID ) ;
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:241:1: use_id : DEUX_POINTS ID -> ^( DEUX_POINTS ID ) ;
     public final LogoParser.use_id_return use_id() throws RecognitionException {
         LogoParser.use_id_return retval = new LogoParser.use_id_return();
         retval.start = input.LT(1);
@@ -2116,8 +2123,8 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:235:2: ( DEUX_POINTS ID -> ^( DEUX_POINTS ID ) )
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:236:2: DEUX_POINTS ID
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:242:2: ( DEUX_POINTS ID -> ^( DEUX_POINTS ID ) )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:243:2: DEUX_POINTS ID
             {
             DEUX_POINTS62=(Token)match(input,DEUX_POINTS,FOLLOW_DEUX_POINTS_in_use_id1107); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DEUX_POINTS.add(DEUX_POINTS62);
@@ -2148,9 +2155,9 @@ public class LogoParser extends Parser {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 244:7: -> ^( DEUX_POINTS ID )
+            // 251:7: -> ^( DEUX_POINTS ID )
             {
-                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:244:10: ^( DEUX_POINTS ID )
+                // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:251:10: ^( DEUX_POINTS ID )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(stream_DEUX_POINTS.nextNode(), root_1);
@@ -2192,7 +2199,7 @@ public class LogoParser extends Parser {
     };
 
     // $ANTLR start "instruction"
-    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:247:1: instruction : ( ( AV | TD | TG | REC | FCC | FCAP ) expr | FPOS CO expr expr CF | VE | LC | BC | repete | affect_id | si | tantque | procedure | appel | retExpr );
+    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:254:1: instruction : ( ( AV | TD | TG | REC | FCC | FCAP ) expr | FPOS CO expr expr CF | VE | LC | BC | repete | affect_id | si | tantque | procedure | appel | retExpr );
     public final LogoParser.instruction_return instruction() throws RecognitionException {
         LogoParser.instruction_return retval = new LogoParser.instruction_return();
         retval.start = input.LT(1);
@@ -2247,7 +2254,7 @@ public class LogoParser extends Parser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
-            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:248:2: ( ( AV | TD | TG | REC | FCC | FCAP ) expr | FPOS CO expr expr CF | VE | LC | BC | repete | affect_id | si | tantque | procedure | appel | retExpr )
+            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:255:2: ( ( AV | TD | TG | REC | FCC | FCAP ) expr | FPOS CO expr expr CF | VE | LC | BC | repete | affect_id | si | tantque | procedure | appel | retExpr )
             int alt13=12;
             switch ( input.LA(1) ) {
             case AV:
@@ -2325,11 +2332,11 @@ public class LogoParser extends Parser {
 
             switch (alt13) {
                 case 1 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:249:4: ( AV | TD | TG | REC | FCC | FCAP ) expr
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:256:4: ( AV | TD | TG | REC | FCC | FCAP ) expr
                     {
                     root_0 = (Object)adaptor.nil();
 
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:249:4: ( AV | TD | TG | REC | FCC | FCAP )
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:256:4: ( AV | TD | TG | REC | FCC | FCAP )
                     int alt12=6;
                     switch ( input.LA(1) ) {
                     case AV:
@@ -2372,7 +2379,7 @@ public class LogoParser extends Parser {
 
                     switch (alt12) {
                         case 1 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:249:6: AV
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:256:6: AV
                             {
                             AV64=(Token)match(input,AV,FOLLOW_AV_in_instruction1144); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2383,7 +2390,7 @@ public class LogoParser extends Parser {
                             }
                             break;
                         case 2 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:250:6: TD
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:257:6: TD
                             {
                             TD65=(Token)match(input,TD,FOLLOW_TD_in_instruction1154); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2394,7 +2401,7 @@ public class LogoParser extends Parser {
                             }
                             break;
                         case 3 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:251:6: TG
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:258:6: TG
                             {
                             TG66=(Token)match(input,TG,FOLLOW_TG_in_instruction1162); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2405,7 +2412,7 @@ public class LogoParser extends Parser {
                             }
                             break;
                         case 4 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:252:6: REC
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:259:6: REC
                             {
                             REC67=(Token)match(input,REC,FOLLOW_REC_in_instruction1170); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2416,7 +2423,7 @@ public class LogoParser extends Parser {
                             }
                             break;
                         case 5 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:253:6: FCC
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:260:6: FCC
                             {
                             FCC68=(Token)match(input,FCC,FOLLOW_FCC_in_instruction1178); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2427,7 +2434,7 @@ public class LogoParser extends Parser {
                             }
                             break;
                         case 6 :
-                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:254:6: FCAP
+                            // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:261:6: FCAP
                             {
                             FCAP69=(Token)match(input,FCAP,FOLLOW_FCAP_in_instruction1187); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
@@ -2450,7 +2457,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:255:6: FPOS CO expr expr CF
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:262:6: FPOS CO expr expr CF
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2477,7 +2484,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:256:6: VE
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:263:6: VE
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2490,7 +2497,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:257:6: LC
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:264:6: LC
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2503,7 +2510,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:258:6: BC
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:265:6: BC
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2516,7 +2523,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:259:6: repete
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:266:6: repete
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2530,7 +2537,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:260:6: affect_id
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:267:6: affect_id
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2544,7 +2551,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:262:6: si
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:269:6: si
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2558,7 +2565,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 9 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:263:6: tantque
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:270:6: tantque
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2572,7 +2579,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 10 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:264:6: procedure
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:271:6: procedure
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2586,7 +2593,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 11 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:265:6: appel
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:272:6: appel
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2600,7 +2607,7 @@ public class LogoParser extends Parser {
                     }
                     break;
                 case 12 :
-                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:266:6: retExpr
+                    // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:273:6: retExpr
                     {
                     root_0 = (Object)adaptor.nil();
 
@@ -2638,8 +2645,8 @@ public class LogoParser extends Parser {
 
     // $ANTLR start synpred3_Logo
     public final void synpred3_Logo_fragment() throws RecognitionException {   
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:12: ( ( PLUS | MOINS ) multExpr )
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:107:12: ( PLUS | MOINS ) multExpr
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:12: ( ( PLUS | MOINS ) multExpr )
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:108:12: ( PLUS | MOINS ) multExpr
         {
         if ( (input.LA(1)>=PLUS && input.LA(1)<=MOINS) ) {
             input.consume();
@@ -2663,8 +2670,8 @@ public class LogoParser extends Parser {
 
     // $ANTLR start synpred5_Logo
     public final void synpred5_Logo_fragment() throws RecognitionException {   
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:11: ( ( MULTI | DIVI ) powExpr )
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:111:11: ( MULTI | DIVI ) powExpr
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:11: ( ( MULTI | DIVI ) powExpr )
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:112:11: ( MULTI | DIVI ) powExpr
         {
         if ( (input.LA(1)>=MULTI && input.LA(1)<=DIVI) ) {
             input.consume();
@@ -2688,8 +2695,8 @@ public class LogoParser extends Parser {
 
     // $ANTLR start synpred6_Logo
     public final void synpred6_Logo_fragment() throws RecognitionException {   
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:8: ( POW atom )
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:115:8: POW atom
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:116:8: ( POW atom )
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:116:8: POW atom
         {
         match(input,POW,FOLLOW_POW_in_synpred6_Logo612); if (state.failed) return ;
         pushFollow(FOLLOW_atom_in_synpred6_Logo615);
@@ -2704,8 +2711,8 @@ public class LogoParser extends Parser {
 
     // $ANTLR start synpred16_Logo
     public final void synpred16_Logo_fragment() throws RecognitionException {   
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:202:9: ( expr )
-        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:202:9: expr
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:209:9: ( expr )
+        // D:\\workspace\\workspace\\nf11_utc\\src\\logoparsing\\Logo.g:209:9: expr
         {
         pushFollow(FOLLOW_expr_in_synpred16_Logo1018);
         expr();
@@ -2861,7 +2868,7 @@ public class LogoParser extends Parser {
             this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "()* loopback of 202:7: ( expr )*";
+            return "()* loopback of 209:7: ( expr )*";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;

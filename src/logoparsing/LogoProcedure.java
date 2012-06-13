@@ -27,13 +27,13 @@ public class LogoProcedure {
 		return paramsList.size();
 	}
 	
-	public boolean containsParam( String paramName){
+	/*public boolean containsParam( String paramName){
 		for (int i = 0; i < paramsList.size(); i++) {
 			if (paramsList.get(i).getNom() == paramName)
 				return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public LogoProcedureParameter getParameterByIndex(int i){
 		return paramsList.get(i);

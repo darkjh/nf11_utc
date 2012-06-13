@@ -9,6 +9,10 @@ public class LogoContext {
 	private LogoTableId[] scopePile = new LogoTableId[nbMax];
 	private int top = -1;
 
+	public void setTop(int top) {
+		this.top = top;
+	}
+
 	private HashMap <String,LogoProcedure> listeProcedure = new HashMap <String,LogoProcedure>();
 
 	/*
@@ -26,6 +30,10 @@ public class LogoContext {
 	public LogoProcedure getProcedureByName(String name){
 		return listeProcedure.get(name);
 	}
+	
+	public boolean test(){
+		return true;
+	}
 
 
 	/*
@@ -34,16 +42,19 @@ public class LogoContext {
 	public void push(LogoTableId table){
 		top ++ ;
 
-		if (top == nbMax)
+		if (top == nbMax){
+			top = 0;
 			Log.appendnl("Pile deborde: SIZE_MAX = "+ nbMax);
+		}
 		
 		scopePile[top]=table;
-		
+		System.out.println("push: top = "+top);
 	}
 
 	public LogoTableId pop(){
 		LogoTableId retVal = scopePile[top];;
 		top --;
+		System.out.println("pop: top = "+top);
 		return retVal;
 	}
 
@@ -53,7 +64,6 @@ public class LogoContext {
 
 	public boolean containsID (String id){
 		for (int i = top; i >= 0; i--) {
-			System.out.println("scopePile["+i+"] = "+scopePile[i]);
 			if(scopePile[i].checkId(id))
 				return true;
 		}

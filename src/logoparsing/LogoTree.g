@@ -38,7 +38,7 @@ prog : {this.context.push(new LogoTableId());}
 
 exp returns [double v]
 	 :
-	^(PLUS x = exp y = exp) { $v = $x.v + $y.v; System.out.println($v); }
+	^(PLUS x = exp y = exp) { $v = $x.v + $y.v;  }
 	| ^(MOINS x = exp y = exp) { $v = $x.v - $y.v; }
 	| ^(MULTI x = exp y = exp) { $v = $x.v * $y.v; }
 	| ^(DIVI x=exp y=exp) {$v = $x.v / $y.v;}
@@ -66,8 +66,8 @@ instruction
 	 | tantque
 	 | procedure
 	 | appel
-	 | a=exp {Log.appendnl("Eval Expr: " + Double.toString($a.v));}
-	 | c=boolExpr {Log.appendnl(Boolean.toString($c.retVal));}
+	 | a=exp 
+	 | c=boolExpr 
 	 | retExpr
 	;
 
@@ -92,19 +92,25 @@ liste_instructions_no_table
   ^(LIST (instruction)+ FINDELISTEVAL)
   ;
  
-param returns [LogoProcedureParameter p]:
- ^(DEUX_POINTS ID) {$p = new LogoProcedureParameter($ID.text, 0);} 
- ;
+//param returns [LogoProcedureParameter p]
+//:
+// ^(DEUX_POINTS ID) 
+// {$p = new LogoProcedureParameter($ID.text, 0);} 
+// ;
+
+param:^(DEUX_POINTS ID);
   
-list_param returns [ArrayList< LogoProcedureParameter > pl]
-@init {$pl = new ArrayList< LogoProcedureParameter >();}
-:
-  ( a = param 
-    {
-      $pl.add($a.p);
-    }
-   )* 
-  ;
+//list_param //returns [ArrayList< LogoProcedureParameter > pl]
+//@init {$pl = new ArrayList< LogoProcedureParameter >();}
+//:
+//  ( a = param 
+//    {
+//      $pl.add($a.p);
+//    }
+//   )* 
+// ;
+
+list_param : param * ;
   
 procedure  // declaration n'a pas besoin de portee, car ce test est deja fait par le parser
 @init{
@@ -156,7 +162,7 @@ repete
 }
 	:
 	{this.context.push(new LogoTableId());} 
-	^(REPETE n = exp {Log.appendnl(Double.toString($n.v)); mark_list = input.mark();} .)
+	^(REPETE n = exp {mark_list = input.mark();} .)
 	{
 		for(int i = 0; i < $n.v; i++) {
 			push(mark_list);

@@ -1,7 +1,0 @@
-POUR carre :n :p
-    AV :n
-   TG 90
-   AV :p
-FIN
-
-carre 15 16

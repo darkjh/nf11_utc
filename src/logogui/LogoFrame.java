@@ -456,6 +456,8 @@ public class LogoFrame extends JFrame {
 				LogoParser.programme_return r = parser.programme();
 				// Resulting tree
 
+				context.setTop(-1); // vider la pile 
+				
 				boolean cont = parser.getValide(); 
 				//tree
 				CommonTree parseTree = (CommonTree) r.getTree();

@@ -194,7 +194,14 @@ procedure:
     ListNomParam = new ArrayList <String>();
   }
   POUR^ ID a = list_param 
-    {this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));} 
+    {
+      if(this.context.getProcedureByName($ID.text) == null )
+        this.context.addProcedure(new LogoProcedure($ID.text,-1,$a.pl));
+      else{
+        setValide(false);
+        Log.appendnl("Procedure error: " + $ID.text + " is multiple defined!");
+      }
+    } 
     liste_evaluation_procedure
   FIN 
     {
@@ -210,7 +217,7 @@ appel
   { 
     if(c != this.context.getProcedureByName($ID.text).getNbParams()){
       setValide(false);
-      Log.appendnl("Procedure " + $ID.text + ": nombre de parametre non coherent.");
+      Log.appendnl("Procedure " + $ID.text + ": nombre de parametre mauvais.");
     }
   }
   ;
@@ -222,7 +229,7 @@ affect_id
 	  if(ListNomParam != null){
 	    if(nomExistDansLeParamListe($i.rid)){
 	      setValide(false);
-	      Log.appendnl("Identificateur deja defini: " + $i.rid);
+	      Log.appendnl("Can not modify the value of the parameter : " + $i.rid);
 	    }
 	    else
 	      context.setIdentifier($i.rid, (double)0);  // occupy a place in the id table
